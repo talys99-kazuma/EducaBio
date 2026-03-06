@@ -1,0 +1,902 @@
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+      background: #f1f8e9;
+      color: #003300;
+    }
+
+    /* ===============================
+       LOGO
+       =============================== */
+    .logo {
+      background: linear-gradient(90deg, #2d6a4f, #c0d8c8);
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 20px;
+    }
+
+    nav a {
+      padding: 25px 67px;
+      font-weight: bold;
+      border-radius: 4px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    nav.menu-principal {
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 10px;
+      background-color: #ffffff;
+    }
+    nav.menu-principal a {
+      background: #2d6a4f;
+}
+
+    .btn-t {
+      padding: 25px 60px;
+      font-weight: bold;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+     .btn-e{
+      padding: 25px 60px;
+      font-weight: bold;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .zoom-btn {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .zoom-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+     }
+
+
+/* ===============================
+   MAIN CONTAINER
+   =============================== */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* ===============================
+   HERO SECTION
+   =============================== */
+.hero {
+  text-align: center;
+  margin-bottom: 20px;
+  border-top: 4px solid #424242; 
+  border-bottom: 4px solid #424242;
+  padding: 80px 60px;
+  background: #2d6a4f;
+  width: 100%;
+  height: 280;
+  
+}
+
+.hero h1 {
+  font-size: 3rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-subtitle {
+  font-size: 1.3rem;
+  color: #ffffff;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ===============================
+   BIOME SECTIONS
+   =============================== */
+.biome-section {
+  margin-bottom: 60px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.biome-section:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.biome-section:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.biome-section:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.biome-content {
+  display: flex;
+  align-items: flex-start;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 3px solid #424242;
+  box-sizing: border-box;
+}
+
+.biome-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.image-container {
+  flex: 1;
+  width: 100%;
+  position: sticky;
+  top: 30px; 
+  align-self: flex-start;
+  }
+  
+
+
+.biome-image {
+  width: 90%;
+  height: 400px;
+  margin-top: 20px;
+ 
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+.biome-imag1{
+  width: 90%; 
+  max-height: 100%; 
+  object-fit: contain; /* Evita cortes e mantém proporção */ 
+  border-radius: 15px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); 
+  transition: transform 0.3s ease; }
+
+
+
+.text-content {
+  flex: 1;
+}
+
+.biome-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 4px solid;
+  color: #424242;
+  border-color: #616161;
+}
+
+
+.biome-description {
+  text-align: justify;
+  hyphens: auto;
+  font-size: 1.25rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  line-height: 1.8;
+  word-spacing: 0; 
+  text-justify: inter-word;
+}
+.bioma-description {
+  text-align: justify;
+  hyphens: auto;
+  font-size: 1.25rem;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  line-height: 1.8;
+  word-spacing: 0; 
+  text-justify: inter-word;
+}
+
+.info-bio {
+  background: linear-gradient(135deg, #f8f8f8, #f8f8f8);
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+
+}
+.info-bio h3 {
+  font-size: 1.5rem;
+  color: #544caf;
+  margin-bottom: 15px;
+}
+
+.info-bio ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.info-bio ul li {
+  padding: 10px 0 10px 30px;
+  position: relative;
+  color: #37474f;
+  font-size: 1.08rem;
+  font-weight:bold
+}
+
+.info-bio ul li::before {
+  content: "▸";
+  position: absolute;
+  left: 5px;
+  color: #544caf;
+  font-size: 1.3rem;
+}
+
+.info-box {
+  background: linear-gradient(135deg, #f1f8f4, #e8f5e9);
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  border-left: 5px solid #4caf50;
+}
+
+.info-box.impacts {
+  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+  border-left: 5px solid #ff0000;
+}
+
+.info-box h3 {
+  font-size: 1.5rem;
+  color: #4caf50;
+  margin-bottom: 15px;
+}
+
+.info-box.impacts h3 {
+  color: #ff0000;
+}
+
+.info-box ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.info-box ul li {
+  padding: 10px 0 10px 30px;
+  position: relative;
+  color: #37474f;
+  font-size: 1.05rem;
+}
+
+.info-box ul li::before {
+  content: "▸";
+  position: absolute;
+  left: 5px;
+  color: #4caf50;
+  font-size: 1.3rem;
+}
+
+.info-box.impacts ul li::before {
+  color: #ff0000;
+}
+
+/* ===============================
+   VIDEOS SECTION
+   =============================== */
+.videos-section {
+  margin: 80px 0;
+  padding: 60px 30px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 90px;
+  border-top: 4px solid #424242; 
+  border-bottom: 4px solid #424242;
+  padding: 80px 60px;
+  background: #2d6a4f;
+  width: 100%;
+ 
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #ffffff;
+  margin-bottom: 50px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+}
+
+.video-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-card h3 {
+  font-size: 1.4rem;
+  color: #01579b;
+  margin-bottom: 10px;
+}
+
+.video-card p {
+  color: #546e7a;
+  font-size: 1rem;
+}
+
+
+
+.btn-primary,
+.btn-secondary {
+  padding: 18px 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+}
+
+.btn-primary {
+  background: white;
+  color: #00897b;
+}
+
+.btn-primary:hover {
+  background: #e0f2f1;
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: white;
+  border: 3px solid white;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+/* ===============================
+   FOOTER
+   =============================== */
+footer {
+  background: #2d6a4f;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 60px;
+}
+
+footer p {
+  font-size: 1.1rem;
+  margin: 5px 0;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+   =============================== */
+@media (max-width: 1024px) {
+  .biome-content {
+    flex-direction: column;
+  }
+
+  .image-container {
+    flex: 1;
+    width: 100%;
+    position: relative;
+  }
+
+  .biome-image {
+    height: 350px;
+  }
+
+  nav a {
+    padding: 20px 60px;
+    font-size: 16px;
+  }
+
+  .btn-e,
+  .btn-t {
+    padding: 20px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .biome-title {
+    font-size: 2rem;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  nav a {
+    padding: 15px 30px;
+    text-align: center;
+  }
+
+  .btn-e,
+  .btn-t {
+    display: none;
+  }
+
+  .videos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-section h2 {
+    font-size: 2rem;
+  }
+
+  .cta-section p {
+    font-size: 1.1rem;
+  }
+}
+
+/* ===============================
+   BOTÃO ☰ FLUTUANTE (MOBILE)
+================================ */
+@media (max-width: 900px) {
+
+  .menu-mobile-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px; /* canto esquerdo */
+    z-index: 3000;
+
+    width: 48px;
+    height: 48px;
+    background: #ffffff;
+    border-radius: 8px; /* QUADRADO bonito */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-mobile-btn span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: #2e7d32; /* cor visível */
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+}
+
+/* ===============================
+   OVERLAY ESCURO
+================================ */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.overlay.ativo {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ===============================
+   MENU LATERAL + PUSH
+================================ */
+@media (max-width: 900px) {
+
+  body.menu-aberto {
+    overflow: hidden;
+  }
+
+  .menu-links {
+    position: fixed;
+    top: 0;
+    left: -75%;
+    width: 75%;
+    height: 100vh;
+    background: #ffffff;
+    padding-top: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding-top: 100px;
+
+    transition: 0.4s ease;
+    z-index: 2500;
+  }
+
+  .menu-links a {
+  width: 85%;
+  text-align: center;
+  padding: 15px;
+  font-size: 16px;
+  }
+
+
+  .menu-links.ativo {
+    left: 0;
+  }
+
+  body.menu-aberto main,
+  body.menu-aberto section,
+  body.menu-aberto footer {
+    transform: translateX(75%);
+    transition: 0.4s ease;
+  }
+
+  /* remover botões decorativos */
+  .btn-e,
+  .btn-t {
+    display: none !important;
+    flex-shrink: 0;
+  }
+}
+
+/* ===============================
+   DESKTOP: menu-links neutra (como se não existisse)
+================================ */
+@media (min-width: 901px) {
+
+  .menu-links {
+    display: contents; /* 🔥 CHAVE DA SOLUÇÃO */
+  }
+
+.overlay {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .menu-links a.ativo { 
+    outline: 3px solid rgba(0,0,0,0.25);
+    transform: scale(1.05);
+  }
+}
+
+/* ===============================
+   TABLET (601-900)
+   =============================== */
+@media (max-width: 900px) and (min-width: 601px) {
+  .hero {
+    padding: 40px 30px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .container {
+    padding: 25px 15px;
+  }
+
+  .biome-content {
+    padding: 25px 20px;
+    flex-direction: column;
+  }
+
+  .biome-title {
+    font-size: 2rem;
+  }
+
+  .image-container {
+    width: 100%;
+  }
+
+  .biome-image {
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  .biome-imag1 {
+    width: 100%;
+    height: auto;
+    max-height: 550px;
+    object-fit: contain;
+  }
+
+  .videos-section {
+    padding: 40px 20px;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+
+  .videos-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .video-card {
+    max-width: 100%;
+  }
+}
+
+/* ===============================
+   MOBILE (<=600)
+   =============================== */
+@media (max-width: 600px) {
+  .container {
+    padding: 15px 10px;
+  }
+
+  .hero {
+    padding: 25px 15px;
+  }
+
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    height: auto;
+  }
+
+  .biome-content {
+    padding: 15px 12px;
+    gap: 15px;
+  }
+
+  .biome-title {
+    font-size: 1.5rem;
+  }
+
+  .biome-description {
+    font-size: 1.0rem;
+    line-height: 1.6;
+  }
+  .bioma-description {
+    font-size: 1.0rem;
+    line-height: 1.6;
+  }
+
+  .info-box {
+    padding: 15px;
+  }
+
+  .info-box h3 {
+    font-size: 1.15rem;
+  }
+
+  .info-box ul li {
+    font-size: 0.9rem;
+    padding: 8px 0 8px 25px;
+  }
+
+  .videos-section {
+    padding: 30px 12px;
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+
+  .video-card {
+    padding: 15px;
+  }
+
+  .video-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .video-card p {
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 900px) {
+  .menu-links a {
+    font-size: 15px;
+    padding: 14px;
+  }
+}
+@media (max-width: 600px) {
+  .videos-section {
+    padding: 40px 15px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}
+/* ===============================
+   ORDEM DOS ELEMENTOS NO MOBILE
+   =============================== */
+/* ===============================
+   MOBILE: layout linear dos biomas
+   NÃO afeta desktop
+   =============================== */
+/* ===============================
+   MOBILE – ordem correta dos biomas
+   =============================== */
+@media (max-width: 768px) {
+
+  .biome-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .biome-title {
+    grid-row: 1;
+  }
+
+  .biome-image {
+    grid-row: 2;
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    object-fit: cover;
+  }
+
+  .biome-imag1 {
+   grid-row: 4;
+   width: 100%;
+   height: 325px;      /* força o preenchimento */
+   object-fit: cover; /* remove bordas brancas */
+   border-radius: 15px;
+}
+
+
+  .biome-description {
+    grid-row: 3;
+  }
+
+  .bioma-description {
+    grid-row: 5;
+  }
+
+  .info-box {
+    grid-row: 6;
+  }
+
+  .info-box.impacts {
+    grid-row: 7;
+  }
+
+  .image-container,
+  .text-content {
+    display: contents;
+  }
+}
+/* ===============================
+   FORÇA LOGO MENOR EM MOBILE
+================================ */
+
+@media (max-width: 900px) {
+
+  .logo img,
+  header .logo img,
+  .header .logo img {
+    width: 160px !important;
+    max-width: 160px !important;
+    height: auto !important;
+  }
+
+}
+/* ===============================
+   NAVEGAÇÃO FINAL RESPONSIVA
+================================ */
+
+.navegacao-final {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 0px 60px;
+  gap: 30px; /* 🔥 espaço entre os botões */
+  flex-wrap: nowrap; /* impede quebrar linha */
+}
+
+.btn-final {
+  flex: 1;
+  max-width: 240px; /* tamanho máximo */
+  min-width: 140px; /* evita esmagar */
+  
+  text-align: center;
+  padding: 14px 0;
+
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+
+  border-radius: 10px;
+  background: #2d6a4f;
+  color: white;
+
+  transition: 0.3s ease;
+}
+
+.btn-final:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* ===============================
+   MOBILE AJUSTE FINO
+================================ */
+@media (max-width: 600px) {
+
+  .navegacao-final {
+    gap: 20px; /* mantém espaço */
+    padding: 30px 15px;
+  }
+
+  .btn-final {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+}
+

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EducaBio</title>
+  <link rel="shortcut icon" href="img/icone1.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- LOGO -->
+<div class="topo-site">
+<header class="logo">
+    <a class="logo" href="https://1drv.ms/u/c/4490febef7bc06d4/EcffMJT8x15PtTCqm5pS9LQB7vXdYtjzTFBx39q_yn1-rA?e=7ib0b2"></a>
+    <img src="img/logo educabio.png" id="logoAdmin" style="max-width:300px;" alt="logo educabio">
+</header>
+
+<!-- MENU -->
+<nav class="menu-principal">
+  <div class="overlay" id="overlay"></div>
+
+  <div class="menu-topo">
+    <div class="menu-mobile-btn" id="menu-mobile-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="menu-links" id="menu-links">
+    <a class="btn-e"></a>
+    <a href="home.html" class="btn-inicio zoom-btn">Inicio</a>
+    <a href="biomas.html" class="btn-biomas zoom-btn">Biomas</a>
+    <a href="impactos.html" class="btn-impactos zoom-btn">Impactos</a>
+    <a href="mapa.html" class="btn-mapa zoom-btn">Mapa</a>
+    <a href="jogos.html" class="btn-jogos zoom-btn">Jogos</a>
+    <a href="avaliacao-site.html" class="btn-jogos zoom-btn">Avaliação</a>
+    <a class="btn-t"></a>
+  </div>
+</nav>
+</div>
+
+<!-- BANNER -->
+<section id="inicio" class="banner">
+  <div> <p>Aprenda sobre os biomas brasileiros e</p> 
+    <p>impactos ambientais de forma divertida!</p></div>
+  <img src="img/mapabaner.png" alt="Ilustracao" class="image"/>
+</section>
+
+<!-- GRID PRINCIPAL -->
+<section class="grid-cards">
+  <a href="biomas.html">
+    <div class="card azul">
+      <img src="img/biomasbrasileiros.jpg" alt="biomas">
+      <span>Biomas brasileiros</span>
+    </div>
+  </a>
+  
+ <a href="impactos.html">
+    <div class="card vermelho">
+      <img src="img/imapctosanbietais.png" alt="impactos">
+      <span>Impactos ambientais</span>
+    </div>
+  </a>
+
+  <a href="mapa.html">
+    <div class="card verde">
+      <img src="img/7.png" alt="mapa">
+      <span>Mapa</span>
+    </div>
+  </a>
+
+ 
+</section>
+
+<footer>
+  EducaBio &copy; 2025 | Portal Educacional
+</footer>
+
+<script>
+const btn = document.getElementById("menu-mobile-btn");
+const menu = document.getElementById("menu-links");
+const overlay = document.getElementById("overlay");
+
+/* abrir / fechar menu */
+function toggleMenu() {
+  btn.classList.toggle("ativo");
+  menu.classList.toggle("ativo");
+  overlay.classList.toggle("ativo");
+  document.body.classList.toggle("menu-aberto");
+}
+
+btn.addEventListener("click", toggleMenu);
+overlay.addEventListener("click", toggleMenu);
+
+/* fechar ao clicar em um link */
+document.querySelectorAll(".menu-links a").forEach(link => {
+  link.addEventListener("click", toggleMenu);
+});
+
+/* destacar página ativa */
+const paginaAtual = location.pathname.split("/").pop();
+document.querySelectorAll(".menu-links a").forEach(link => {
+  if (link.getAttribute("href") === paginaAtual) {
+    link.classList.add("ativo");
+  }
+});
+
+// =============================
+// FUNÇÃO DE RESET + REDIRECIONAMENTO
+// =============================
+function resetGlobal() {
+    let versao = localStorage.getItem("versaoGlobal") || "1";
+    let novaVersao = parseInt(versao) + 1;
+
+    localStorage.setItem("versaoGlobal", novaVersao.toString());
+
+    alert("Reset ativado! Redirecionando para o questionário...");
+
+    // Redireciona para o index na pasta anterior
+    window.location.href = "../index.html";
+}
+
+// =============================
+// OPÇÃO 1 - 7 cliques no logo
+// =============================
+let contadorCliques = 0;
+
+document.getElementById("logoAdmin").addEventListener("click", function() {
+    contadorCliques++;
+
+    if (contadorCliques === 7) {
+        resetGlobal();
+        contadorCliques = 0;
+    }
+
+    setTimeout(() => {
+        contadorCliques = 0;
+    }, 3000);
+});
+
+// =============================
+// OPÇÃO 2 - Código secreto
+// =============================
+let senhaDigitada = "";
+const senhaSecreta = "ADMIN123";
+
+document.addEventListener("keydown", function(e) {
+    senhaDigitada += e.key.toUpperCase();
+
+    if (senhaDigitada.includes(senhaSecreta)) {
+        resetGlobal();
+        senhaDigitada = "";
+    }
+
+    if (senhaDigitada.length > 20) {
+        senhaDigitada = "";
+    }
+});
+</script>
+
+</body>
+</html>

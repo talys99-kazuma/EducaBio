@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário Diagnóstico - Biomas Brasileiros</title>
+    <link rel="shortcut icon" href="assets/img/icone1.png" type="image/x-icon">
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
+    <header class="quiz-header">
+        <div class="header-content">
+            <img src="assets/img/logo educabio.png" style="max-width:300px;" alt="logo educabio">
+        </div>
+    </header>
+
+    <main class="quiz-main">
+        <div class="quiz-intro">
+            <div class="intro-icon">🌎</div>
+            <h2>Questionário Diagnóstico</h2>
+            <p class="intro-text">Antes de começar, gostaríamos de conhecer seu nível de conhecimento sobre biomas brasileiros e impactos ambientais. Este questionário nos ajudará a personalizar sua experiência.</p>
+            
+        </div>
+
+        <div class="biomes-wrapper">
+        <div class="biomes-showcase">
+            
+            <div class="biome-card">
+                <img src="assets/img/amazonia.jpg" alt="Amazônia" class="biome-img">
+                <span class="biome-name">Amazônia</span>
+            </div>
+            <div class="biome-card">
+                <img src="assets/img/cerrado.jpg" alt="Cerrado" class="biome-img">
+                <span class="biome-name">Cerrado</span>
+            </div>
+            <div class="biome-card">
+                <img src="assets/img/matatlantica.jpg" alt="Mata Atlântica" class="biome-img">
+                <span class="biome-name">Mata Atlântica</span>
+            </div>
+            <div class="biome-card">
+                <img src="assets/img/caatinga.png" alt="Caatinga" class="biome-img">
+                <span class="biome-name">Caatinga</span>
+            </div>
+            <div class="biome-card">
+                <img src="assets/img/pampa.jpg" alt="Pampa" class="biome-img">
+                <span class="biome-name">Pampa</span>
+            </div>
+            <div class="biome-card">
+                <img src="assets/img/Pantanal.jpeg" alt="Pantanal" class="biome-img">
+                <span class="biome-name">Pantanal</span>
+            </div>
+        </div>
+        </div>
+
+        <form id="diagnostic-form" class="quiz-form">
+            <input type="hidden" id="google-form-url" value="SEU_LINK_GOOGLE_FORMS_AQUI">
+            
+            <div id="questions-container" class="questions-container"></div>
+
+            <div class="form-actions">
+                <button type="button" id="submit-btn" class="btn-submit">
+                    <span>Enviar Respostas</span>
+                    <span class="btn-icon">➜</span>
+                </button>
+            </div>
+
+            <div id="result-message" class="result-message hidden"></div>
+        </form>
+    </main>
+
+   <footer>
+ EducaBio &copy; 2025 | Portal Educacional
+</footer>
+    <script src="assets/js/index.js"></script>
+</body>
+</html>

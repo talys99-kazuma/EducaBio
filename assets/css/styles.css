@@ -1,0 +1,452 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+      background: #ffffff;
+      color: #003300;
+    }
+
+    /* ===============================
+       LOGO
+       =============================== */
+    .logo {
+      background: linear-gradient(90deg, #2d6a4f, #c0d8c8);
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 20px;
+    }
+
+    nav a {
+      text-align:justify;
+      padding: 25px 67px;
+      font-weight: bold;
+      border-radius: 4px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #2d6a4f;
+    }
+
+    /* Cores em degradê estilo IBGE */
+
+   
+    .btn-t {
+      background: #2d6a4f;
+      padding: 25px 60px;
+      font-weight: bold;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+     .btn-e{
+     background: #2d6a4f;
+      padding: 25px 60px;
+      font-weight: bold;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .zoom-btn {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .zoom-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+     }
+
+    
+    
+
+    /* ===============================
+       BANNERS GRANDES (HOME)
+       =============================== */
+    .banner {
+      width: 100%;
+      height: 330px;
+      background: linear-gradient(1000deg,#c0d8c8, #2d6a4f);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding:  0px 80px 0px 60px;
+      color: white;
+      font-size: 42px;
+      font-weight: bold;
+      border-bottom: 4px solid #e0e0e0;
+    }
+
+    .image {
+  max-height: 300px;
+  max-width: 100%;
+  object-fit: contain;
+  float: right;
+
+  /* Animação */
+ animation: zoom 6s ease-in-out infinite;
+}
+@keyframes zoom {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+
+
+    /* Caixas coloridas */
+    .grid-cards {
+      text-decoration: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px 40px;
+    }
+    .grid-cards a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+
+ .card { border-radius: 6px; color: white; 
+  font-size: 26px; 
+  font-weight: bold; 
+  min-height: 300px; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-end; /* texto sempre embaixo */ 
+  align-items: center; 
+  text-align: center; 
+  overflow: hidden; 
+  position: relative; 
+} 
+.card img { 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; /* cobre todo o espaço sem distorcer */ 
+  z-index: 0; 
+} 
+
+.card span { 
+  position: relative; 
+  z-index: 1; 
+  background: rgba(0,0,0,0.5); /* fundo semitransparente */ 
+  width: 100%; 
+  padding: 10px; }
+
+.card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    
+
+    .card.azul { background: #1f3c88; }
+    .card.verde { background: #9acd32; }
+    .card.vermelho { background: #d8434f; }
+
+   
+footer {
+  background: #2d6a4f;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 60px;
+}
+
+footer p {
+  font-size: 1.1rem;
+  margin: 5px 0;
+}
+
+ /* ===============================
+   RESPONSIVIDADE - TABLET
+   =============================== */
+@media (max-width: 900px) and (min-width: 601px) {
+  .banner {
+    flex-direction: column;
+    text-align: center;
+    font-size: 26px;
+    height: auto;
+    padding: 25px 20px;
+    margin-bottom: 10px;
+  }
+
+  .banner p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .banner img,
+  .image {
+    max-height: 200px;
+    margin-top: 15px;
+    width: 100%;
+    float: none;
+  }
+
+  .grid-cards {
+    grid-template-columns: 1fr;
+    padding: 15px 20px;
+    gap: 20px;
+  }
+
+  .card {
+    min-height: 300px;
+    font-size: 22px;
+  }
+
+  .card img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .card span {
+    font-size: 17px;
+    padding: 10px;
+  }
+}
+
+/* ===============================
+   RESPONSIVIDADE - MOBILE
+   =============================== */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+
+  /* Menu */
+  nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  nav a {
+    padding: 12px 20px;
+    font-size: 16px;
+    width: 90%;
+    text-align: center;
+  }
+
+  /* Banner */
+  .banner {
+    flex-direction: column;
+    text-align: center;
+    font-size: 22px;
+    height: auto;
+    padding: 20px 15px;
+    background: linear-gradient(900deg, #2d6a4f, #c0d8c8);
+  }
+
+  .banner p {
+    font-size: 1.1rem;
+    line-height: 1.4;
+  }
+
+  .banner img,
+  .image {
+    max-height: 160px;
+    margin-top: 15px;
+    width: 100%;
+    float: none;
+  }
+
+  /* Grid de cards */
+  .grid-cards { 
+    grid-template-columns: 1fr;
+    padding: 10px;
+    gap: 12px;
+  } 
+  
+  .card { 
+    font-size: 20px; 
+    min-height: 250px;
+  } 
+  
+  .card img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  } 
+    
+  .card span { 
+    font-size: 16px; 
+    padding: 8px; 
+  }
+
+  /* Logo */
+  header.logo img {
+    max-width: 200px;
+  }
+
+  /* Footer */
+  footer {
+    font-size: 14px;
+    padding: 20px 10px;
+    margin-top: 30px;
+  }
+}
+
+
+/* ===============================
+   BOTÃO ☰ FLUTUANTE (MOBILE)
+================================ */
+@media (max-width: 900px) {
+
+  .menu-mobile-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px; /* canto esquerdo */
+    z-index: 3000;
+
+    width: 48px;
+    height: 48px;
+    background: #ffffff;
+    border-radius: 8px; /* QUADRADO bonito */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-mobile-btn span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: #2e7d32; /* cor visível */
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+}
+
+/* ===============================
+   OVERLAY ESCURO
+================================ */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.overlay.ativo {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ===============================
+   MENU LATERAL + PUSH
+================================ */
+@media (max-width: 900px) {
+
+  body.menu-aberto {
+    overflow: hidden;
+  }
+
+  .menu-links {
+    position: fixed;
+    top: 0;
+    left: -75%;
+    width: 75%;
+    height: 100vh;
+    background: #ffffff;
+    padding-top: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding-top: 100px;
+
+    transition: 0.4s ease;
+    z-index: 2500;
+  }
+
+  .menu-links a {
+  width: 85%;
+  text-align: center;
+  padding: 15px;
+  font-size: 16px;
+  }
+
+
+  .menu-links.ativo {
+    left: 0;
+  }
+
+  body.menu-aberto main,
+  body.menu-aberto section,
+  body.menu-aberto footer {
+    transform: translateX(75%);
+    transition: 0.4s ease;
+  }
+
+  /* remover botões decorativos */
+  .btn-e,
+  .btn-t {
+    display: none !important;
+    flex-shrink: 0;
+  }
+}
+
+/* ===============================
+   DESKTOP: menu-links neutra (como se não existisse)
+================================ */
+@media (min-width: 901px) {
+
+  .menu-links {
+    display: contents; /* 🔥 CHAVE DA SOLUÇÃO */
+  }
+  .overlay {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .menu-links a.ativo { 
+    outline: 3px solid rgba(0,0,0,0.25);
+    transform: scale(1.05);
+  }
+}
+/* ===============================
+   FORÇA LOGO MENOR EM MOBILE
+================================ */
+
+@media (max-width: 900px) {
+
+  .logo img,
+  header .logo img,
+  .header .logo img {
+    width: 160px !important;
+    max-width: 160px !important;
+    height: auto !important;
+  }
+
+}
+

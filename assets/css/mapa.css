@@ -1,0 +1,642 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial Rounded MT Bold", Arial, sans-serif;
+  background: linear-gradient(90deg, #4d5a54, #f1f8e9);
+  color: #003300;
+}
+
+
+.logo {
+  background: linear-gradient(90deg, #2d6a4f, #c0d8c8);
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+}
+
+nav a {
+  padding: 25px 67px;
+  font-weight: bold;
+  border-radius: 4px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav.menu-principal {
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 10px;
+      background-color: #ffffff;
+      
+}
+nav.menu-principal a {
+      background: #2d6a4f;
+}
+.btn-t {
+  padding: 25px 60px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.btn-e {
+  padding: 25px 60px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.zoom-btn {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.zoom-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+/* Estilos para o título do mapa */
+.mapa-title {
+  text-align: center;
+  padding: 80px 60px;
+  margin-bottom: 20px;
+  border-top: 4px solid #424242; 
+  border-bottom: 4px solid #424242;
+  background: #2d6a4f;
+  height: 260px;
+  width: 100%;
+
+}
+
+.mapa-title h1 {
+  font-size: 3rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mapa-title p {
+  font-size: 1.2rem;
+  color: #ffffff;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.map-wrapper {
+  width: 600px;
+  max-width: 100%;
+}
+
+
+#map {
+display: block;
+  width: 100%;
+  height: auto;
+}
+
+#map .state {
+  cursor: pointer;
+}
+
+#map .state .shape {
+  cursor: pointer;
+  transition: fill 0.3s ease;
+}
+
+#map .label_icon_state {
+  fill: #fff;
+  font-family: Arial;
+  font-size: 11px;
+  line-height: 12px;
+  font-weight: normal;
+  pointer-events: none;
+}
+#map .model-green .state .icon_state {
+fill: #10592f;
+}
+#map .model-green .state .shape {
+  fill: #0e7207;
+}
+
+#map .model-green .state .label_state {
+  fill: #000000;
+  font-size:100;
+}
+
+#map .state:hover .label_state,
+#map .state:hover .label_state {
+ display: block;
+}
+
+#map .state .label_state {
+display: none;
+font-family: Arial;
+font-size: 20px;
+line-height: 16px;
+font-weight: bold;
+}
+
+#map .model-green .state:hover .shape,
+#map .model-green .state.active .shape {
+  fill: #1db8cc;
+}
+
+#map .model-green .state:hover .icon_state,
+#map .model-green .state.hover .icon_state {
+  fill: #5a95ce;;
+}
+/* Painel de informações aprimorado */
+#info {
+  background: linear-gradient(135deg, #ffffff, #f5f5f5);
+  color: #1b5e20;
+  padding: 30px;
+  border-radius: 15px;
+  border: 3px solid #4caf50;
+  max-width: 500px;
+  min-width: 350px;
+  min-height: 400px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.3s ease;
+  position: relative; /* essencial para o botão */
+}
+#fechar-info {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+
+  background: none;
+  border: none;
+
+  font-size: 22px;
+  font-weight: bold;
+  color: #2e7d32;
+
+  cursor: pointer;
+  line-height: 1;
+}
+
+#fechar-info:hover {
+  color: #c62828;
+  transform: scale(1.1);
+}
+
+#info.active {
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#estado-nome {
+  font-size: 2rem;
+  color: #1b5e20;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #4caf50;
+  padding-bottom: 10px;
+}
+
+#estado-info h3 {
+  color: #2e7d32;
+  font-size: 1.3rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#estado-info p {
+  color: #37474f;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+#estado-info ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#estado-info ul li {
+  padding: 8px 0 8px 25px;
+  position: relative;
+  color: #37474f;
+  font-size: 1rem;
+}
+
+#estado-info ul li::before {
+  content: "▸";
+  position: absolute;
+  left: 5px;
+  color: #4caf50;
+  font-size: 1.2rem;
+}
+
+footer {
+  background: #2d6a4f;
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+  
+}
+
+footer p {
+  font-size: 1.1rem;
+  margin: 5px 0;
+}
+
+/* RESPONSIVE - TABLET */
+@media (max-width: 900px) and (min-width: 600px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 20px 15px;
+    gap: 20px;
+    flex-wrap: nowrap;
+    transition: all 0.5s ease;
+  }
+
+  .map-wrapper {
+    width: 100%;
+    max-width: 100%;
+    transition: all 0.5s ease;
+    flex-shrink: 0;
+  }
+
+  /* Quando o info panel esta ativo, o mapa reduz */
+  .container.info-aberto .map-wrapper {
+    width: 50%;
+    max-width: 50%;
+  }
+
+  #info {
+    min-width: 0;
+    max-width: 0;
+    width: 0;
+    min-height: auto;
+    overflow: hidden;
+    opacity: 0;
+    padding: 0;
+    border: none;
+    transition: all 0.5s ease;
+    flex-shrink: 0;
+  }
+
+  /* Quando o info panel esta ativo */
+  .container.info-aberto #info {
+    max-width: 48%;
+    width: 48%;
+    min-width: 280px;
+    padding: 25px;
+    opacity: 1;
+    border: 3px solid #4caf50;
+    overflow-y: auto;
+  }
+
+  #info.hidden {
+    display: block !important;
+    max-width: 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    opacity: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .mapa-title {
+    height: auto;
+    padding: 50px 30px;
+  }
+
+  .mapa-title h1 {
+    font-size: 2.2rem;
+  }
+
+  .mapa-title p {
+    font-size: 1.05rem;
+  }
+}
+
+/* RESPONSIVE - MOBILE */
+@media (max-width: 599px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .mapa-title {
+    height: auto;
+    padding: 30px 15px;
+  }
+
+  .mapa-title h1 {
+    font-size: 1.6rem;
+  }
+
+  .mapa-title p {
+    font-size: 0.95rem;
+  }
+
+  #info {
+    min-width: auto;
+    max-width: 100%;
+    width: 100%;
+    padding: 20px;
+    min-height: auto;
+  }
+
+  #estado-nome {
+    font-size: 1.4rem;
+  }
+
+  nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav a {
+    padding: 15px 30px;
+    text-align: center;
+  }
+
+  .btn-e,
+  .btn-t {
+    display: none;
+  }
+}
+
+/* ===============================
+   BOTÃO ☰ FLUTUANTE (MOBILE)
+================================ */
+@media (max-width: 900px) {
+
+  .menu-mobile-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px; /* canto esquerdo */
+    z-index: 3000;
+
+    width: 48px;
+    height: 48px;
+    background: #ffffff;
+    border-radius: 8px; /* QUADRADO bonito */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-mobile-btn span {
+  display: block;
+  width: 26px;
+  height: 3px;
+  background: #2e7d32; /* cor visível */
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+}
+
+/* ===============================
+   OVERLAY ESCURO
+================================ */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.overlay.ativo {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ===============================
+   MENU LATERAL + PUSH
+================================ */
+@media (max-width: 900px) {
+
+  body.menu-aberto {
+    overflow: hidden;
+  }
+
+  .menu-links {
+    position: fixed;
+    top: 0;
+    left: -75%;
+    width: 75%;
+    height: 100vh;
+    background: #ffffff;
+    padding-top: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding-top: 100px;
+
+    transition: 0.4s ease;
+    z-index: 2500;
+  }
+
+  .menu-links a {
+  width: 85%;
+  text-align: center;
+  padding: 15px;
+  font-size: 16px;
+  }
+
+
+  .menu-links.ativo {
+    left: 0;
+  }
+
+  body.menu-aberto main,
+  body.menu-aberto section,
+  body.menu-aberto footer {
+    transform: translateX(75%);
+    transition: 0.4s ease;
+  }
+
+  /* remover botões decorativos */
+  .btn-e,
+  .btn-t {
+    display: none !important;
+  }
+}
+
+@media (min-width: 901px) {
+
+  .menu-links {
+    display: contents; /* 🔥 CHAVE DA SOLUÇÃO */
+  }
+}
+
+@media (max-width: 900px) {
+  .menu-links a.ativo { 
+    outline: 3px solid rgba(0,0,0,0.25);
+    transform: scale(1.05);
+  }
+}
+
+/* ===============================
+   AJUSTES MAPA - MOBILE
+================================ */
+@media (max-width: 600px) {
+
+  .map-wrapper {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  #map {
+    width: 100%;
+    height: auto;
+  }
+
+}
+@media (max-width: 600px) {
+
+  #info {
+    min-width: auto;
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  #estado-nome {
+    font-size: 1.5rem;
+  }
+
+  #estado-info p,
+  #estado-info ul li {
+    font-size: 0.95rem;
+  }
+}
+@media (max-width: 600px) {
+
+  .container {
+    padding: 15px;
+    gap: 25px;
+  }
+
+}
+/* ===============================
+   LOGO MENOR EM QUALQUER MOBILE
+================================ */
+
+@media (max-width: 900px) {
+
+  .logo img,
+  header .logo img,
+  .header .logo img {
+    width: 160px !important;
+    max-width: 160px !important;
+    height: auto !important;
+  }
+
+}
+@media (min-width: 901px) {
+
+  .menu-links {
+    display: contents; /* 🔥 CHAVE DA SOLUÇÃO */
+  }
+  .overlay {
+    display: none;
+  }
+}
+/* ===============================
+   NAVEGAÇÃO FINAL RESPONSIVA
+================================ */
+
+.navegacao-final {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  gap: 30px; /* 🔥 espaço entre os botões */
+   padding: 40px 5%;
+  background: #f1f8e9;
+border-top: 3px solid #424242;
+  box-sizing: border-box;
+  
+}
+
+.btn-final {
+  flex: 1;
+  max-width: 240px; /* tamanho máximo */
+  min-width: 140px; /* evita esmagar */
+  
+  text-align: center;
+  padding: 14px 0;
+
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+
+  border-radius: 10px;
+  background: #2d6a4f;
+  color: white;
+
+  transition: 0.3s ease;
+}
+
+.btn-final:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* ===============================
+   MOBILE AJUSTE FINO
+================================ */
+@media (max-width: 600px) {
+
+  .navegacao-final {
+    gap: 20px; /* mantém espaço */
+    padding: 30px 15px;
+  }
+
+  .btn-final {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+}
