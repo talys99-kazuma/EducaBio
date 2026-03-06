@@ -59,7 +59,7 @@ body {
 /* Intro Section */
 .quiz-intro {
     background: white;
-    padding: 0px;
+    padding: 9px;
     border-radius: 20px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.1);
     text-align: center;
@@ -85,7 +85,7 @@ body {
 
 .intro-text {
     color: #1b5e20;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     line-height: 1.8;
     margin-bottom: 30px;
 }
