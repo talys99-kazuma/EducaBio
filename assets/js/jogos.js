@@ -388,7 +388,7 @@ function preloadImages() {
 const biomasConfig = [
     { 
         id: 'Amazonia', 
-        desc: 'Colete sementes e agua. Evite queimadas e desmatamento!',
+        desc: 'Colete sementes e água. Evite queimadas e desmatamento!',
         items: [
             { type: 'semente', points: 50, img: 'semente' },
             { type: 'agua', points: 40, img: 'agua' },
@@ -414,7 +414,7 @@ const biomasConfig = [
     },
     { 
         id: 'Mata Atlantica', 
-        desc: 'Salve especies endemicas! Colete frutas e evite poluicao.',
+        desc: 'Salve espécies endêmicas! Colete frutas e evite poluição.',
         items: [
             { type: 'animal', points: 65, img: 'animal' },
             { type: 'flor', points: 50, img: 'flor' },
@@ -427,7 +427,7 @@ const biomasConfig = [
     },
     { 
         id: 'Caatinga', 
-        desc: 'Colete agua e sementes. Evite a desertificacao!',
+        desc: 'Colete água e sementes. Evite a desertificação!',
         items: [
             { type: 'agua', points: 70, img: 'agua' },
             { type: 'semente', points: 45, img: 'semente' }
@@ -439,7 +439,7 @@ const biomasConfig = [
     },
     { 
         id: 'Pantanal', 
-        desc: 'Proteja as aguas! Colete animais e evite poluicao.',
+        desc: 'Proteja as águas! Colete animais e evite poluição.',
         items: [
             { type: 'animal', points: 55, img: 'animal' },
             { type: 'agua', points: 45, img: 'agua' },
