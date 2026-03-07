@@ -1057,14 +1057,14 @@ function setupMobileInterativo() {
             '<img class="ts-icon" src="https://cdn-icons-png.flaticon.com/512/3048/3048122.png" alt="Explorador">' +
             '<h3>Biomas & Impactos</h3>' +
             '<p class="ts-subtitle">Jogo Interativo</p>' +
-            '<p class="ts-hint">Colete itens beneficos e evite perigos ambientais!</p>' +
+            '<p class="ts-hint">Colete itens benéficos e evite perigos ambientais!</p>' +
             '<div class="ts-form">' +
                 '<div class="ts-field">' +
                     '<label>Escolher Bioma:</label>' +
                     '<select id="tablet-bioma-select">' + biomaOptions + '</select>' +
                 '</div>' +
                 '<div class="ts-missao-box" id="tablet-missao-box">' +
-                    '<strong>Missao:</strong>' +
+                    '<strong>Missão:</strong>' +
                     '<span id="tablet-missao-text">' + biomasConfig[0].desc + '</span>' +
                 '</div>' +
                 '<div class="ts-field">' +
