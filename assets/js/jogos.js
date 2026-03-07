@@ -67,7 +67,7 @@ const memoriaImages = [
     { id: 'onca', name: 'Onça-pintada', img: 'img/jogos/onca.jpg' },
     { id: 'capivara', name: 'Capivara', img: 'img/jogos/capivara.jpg'},
     { id: 'Loboguara', name: 'Lobo-guará', img: 'img/jogos/loboguara.jpg' },
-    { id: 'tuiuiu', name: 'Tuiuiu', img: 'img/jogos/tuiuiu.jpg' },
+    { id: 'tuiuiu', name: 'Tuiuiu', img: 'img/jogos/Tuiuiu.jpg' },
     { id: 'mico', name: 'Mico-leão-dourado', img: 'img/jogos/mico.jpg' },
     { id: 'Boto', name: 'Boto-Cor-de-Rosa', img: 'img/jogos/BotoCordeRosa.jpg' },
     { id: 'seringueira', name: 'Seringueira', img: 'img/jogos/seringueira.jpg' },
