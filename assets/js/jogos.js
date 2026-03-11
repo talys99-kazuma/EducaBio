@@ -1634,7 +1634,7 @@ const quizQuestions = {
                 "Vulcões ativos"
             ],
             correct: 1,
-            explanation: "O aquecimento global resulta do efeito estufa intensificado por emissões de CO2 e outros gases."
+            explanation: "O aquecimento global resulta do efeito estufa intensificado por emissões de CO₂ e outros gases."
         },
         {
             question: "Qual é a principal função de uma Unidade de Conservação?",
