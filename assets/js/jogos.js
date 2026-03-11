@@ -1605,12 +1605,12 @@ const quizQuestions = {
             question: "Qual é a importância das árvores?",
             options: [
                 "Apenas para dar sombra",
-                "Produzem oxigênio, absorvem CO2 e protegem o solo",
+                "Produzem oxigênio, absorvem CO₂ e protegem o solo",
                 "Apenas para madeira",
                 "Não têm importância"
             ],
             correct: 1,
-            explanation: "As árvores são essenciais: produzem oxigênio, absorvem CO2, protegem o solo e abrigam animais!"
+            explanation: "As árvores são essenciais: produzem oxigênio, absorvem CO₂, protegem o solo e abrigam animais!"
         },
         {
             question: "O que é reciclagem?",
@@ -1683,7 +1683,7 @@ const quizQuestions = {
     ],
     nivel3: [ // Identificar Biomas por Imagens
         {
-            question: "Identifique o bioma mostrado na imagem:",
+            question: "Observe as características dessa imagem e marque a alternativa correspondente ao seu bioma:",
             image: "img/jogos/quiz/floresta-amazonica.jpg",
             options: [
                 "Amazônia",
@@ -1695,7 +1695,7 @@ const quizQuestions = {
             explanation: "A Amazônia é a maior floresta tropical do mundo, com vegetação densa e alta biodiversidade!"
         },
         {
-            question: "Que bioma brasileiro é caracterizado por árvores retorcidas e cascas grossas?",
+            question: "Qual bioma brasileiro é caracterizado por apresentar árvores retorcidas e caules com casca grossa?",
             image: "img/jogos/quiz/cerrado.jpg",
             options: [
                 "Mata Atlântica",
