@@ -326,7 +326,6 @@ const gameImages = {
     semente: 'img/jogos/semente.png',
     fruta1: 'img/jogos/fruta1.png',
     fruta: 'img/jogos/fruta.png',
-    fruta2: 'img/jogos/fruta2.png',
     agua: 'img/jogos/agua.png',
     animal: 'img/jogos/animal.png',
     animal1: 'img/jogos/animal1.png',
@@ -334,7 +333,7 @@ const gameImages = {
     flor2: 'img/jogos/flor2.png',
     queimada: 'img/jogos/queimada.png',
     fogo: 'img/jogos/fogo.png',
-    jaburicaba: 'img/jogos/jabuticaba.png',
+    jabuticaba: 'img/jogos/jabuticaba.png',
     poluicao: 'img/jogos/poluicao.png',
     desmatamento: 'img/jogos/desmatamento.png',
     lixo: 'img/jogos/lixo.png'
@@ -418,7 +417,7 @@ const biomasConfig = [
         items: [
             { type: 'animal', points: 65, img: 'animal' },
             { type: 'flor', points: 50, img: 'flor' },
-            { type: 'fruta2', points: 55, img: 'fruta2' }
+            { type: 'jabuticaba', points: 55, img: 'jabuticaba' }
         ],
         hazards: [
             { type: 'desmatamento', damage: 1, img: 'desmatamento' },
@@ -680,7 +679,7 @@ function drawBackground(ctx, canvas, bioma) {
     ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
     ctx.fillRect(10, 10, ctx.measureText(bioma.id).width + 30, 35);
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'Arial Rounded MT Bold, Arial';
+    ctx.font = 'bold 18px Nunito, Arial';
     ctx.textAlign = 'left';
     ctx.fillText(bioma.id, 20, 33);
 }

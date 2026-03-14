@@ -6,7 +6,7 @@
 
 body {
   font-family: "Arial Rounded MT Bold", Arial, sans-serif;
-  background: linear-gradient(90deg, #4d5a54, #f1f8e9);
+  background: linear-gradient(90deg, #000000, #4d5a54);
   color: #003300;
 }
 
@@ -95,14 +95,24 @@ nav.menu-principal a {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 40px;
-  gap: 40px;
-  flex-wrap: wrap;
+  padding: 20px;
+  gap: 20px;
+  width: 100%;
+  height: auto;
+  min-height: auto;
 }
+
 
 .map-wrapper {
   width: 600px;
   max-width: 100%;
+  display: flex;          /* Coloca legenda e mapa lado a lado */
+  flex-direction: row;    /* Garante a direção de linha */
+  align-items: center;    /* Centraliza verticalmente com o mapa */
+  justify-content: center; /* Centraliza o conjunto na página */
+  gap: 20px;              /* Espaço entre a legenda e o mapa */
+  position: relative;
+    
 }
 
 
@@ -122,22 +132,101 @@ display: block;
 }
 
 #map .label_icon_state {
-  fill: #fff;
+  fill: #ffffff;
   font-family: Arial;
   font-size: 11px;
   line-height: 12px;
   font-weight: normal;
   pointer-events: none;
 }
-#map .model-green .state .icon_state {
-fill: #10592f;
-}
-#map .model-green .state .shape {
-  fill: #0e7207;
+.norte {
+    fill: #008d4c !important; /* Verde */
 }
 
+.nordeste {
+    fill: #f39c12 !important; /* Laranja/Amarelo */
+}
+
+.centro-oeste {
+    fill: #d8db34 !important; /* Vermelho */
+}
+
+.sudeste {
+    fill: #e74c3c !important; /* Azul */
+}
+
+.sul {
+    fill: #3498db !important; /* Roxo */
+}
+
+/* Container da Legenda */
+.legenda-container {
+    position: absolute;
+    bottom: 130px; /* Distância do fundo */
+    left: 20px;  /* Distância da direita */
+    background: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    z-index: 10; /* Garante que fique em cima do mapa */
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    transform-origin: left bottom;
+}
+
+/* Estilo do item da legenda */
+.legenda-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+}
+
+/* O quadradinho colorido */
+.quadrado {
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+/* Cores da Legenda (Casando com as cores do mapa) */
+.quadrado.norte { background-color: #008d4c; }
+.quadrado.nordeste { background-color: #f39c12; }
+.quadrado.centro-oeste { background-color: #d8db34; }
+.quadrado.sudeste { background-color: #e74c3c; }
+.quadrado.sul { background-color: #3498db; }
+
+/* Ajuste para mobile: se a tela for pequena, a legenda diminui */
+@media (max-width: 600px) {
+    .legenda-container {
+        bottom: 70px;
+        font-size: 12px;
+        padding: 3px;
+    }
+    .quadrado {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+
+  .legenda-container {
+    left: 10px;      /* aproxima da borda */
+    bottom: 50px;    /* sobe um pouco mais */
+    font-size: 12px; /* texto um pouco menor */
+    padding: 8px;
+  }
+
+}
 #map .model-green .state .label_state {
-  fill: #000000;
+  fill: #ffffff;
   font-size:100;
 }
 
@@ -149,19 +238,19 @@ fill: #10592f;
 #map .state .label_state {
 display: none;
 font-family: Arial;
-font-size: 20px;
+font-size: 18px;
 line-height: 16px;
 font-weight: bold;
 }
 
 #map .model-green .state:hover .shape,
 #map .model-green .state.active .shape {
-  fill: #1db8cc;
+  fill: #b7b2de;
 }
 
 #map .model-green .state:hover .icon_state,
 #map .model-green .state.hover .icon_state {
-  fill: #5a95ce;;
+  fill: #b7b2de;;
 }
 /* Painel de informações aprimorado */
 #info {
@@ -299,6 +388,9 @@ footer p {
     max-width: 50%;
   }
 
+  .container.info-aberto .legenda-container {
+  transform: scale(0.8);
+}
   #info {
     min-width: 0;
     max-width: 0;
@@ -324,7 +416,7 @@ footer p {
   }
 
   #info.hidden {
-    display: block !important;
+    display: none !important;
     max-width: 0 !important;
     width: 0 !important;
     min-width: 0 !important;

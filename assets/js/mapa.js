@@ -253,12 +253,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const fecharInfo = document.getElementById("fechar-info")
   const container = document.querySelector(".container")
 
-  fecharInfo.addEventListener("click", () => {
-    infoBox.classList.remove("active")
-    infoBox.classList.add("hidden")
-    states.forEach((state) => state.classList.remove("active"))
-    if (container) container.classList.remove("info-aberto")
+ fecharInfo.addEventListener("click", () => {
+  infoBox.classList.remove("active")
+  infoBox.classList.add("hidden")
+
+  document.querySelectorAll(".state").forEach((state) => {
+    state.classList.remove("active")
   })
+
+  container.classList.remove("info-aberto")
+
+  /* corrige o espaço que sobra */
+  container.style.height = "auto"
+  document.body.style.height = "auto"
+})
 
   states.forEach((state) => {
     state.addEventListener("click", function (e) {
@@ -273,7 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (info) {
         estadoNome.textContent = info.nome
         estadoInfo.innerHTML = `
-          <h3>Biomas Predominantes</h3>
+          <h3>Biomas</h3>
           <p>${info.biomas}</p>
           
           <h3>Fauna Caracteristica</h3>
