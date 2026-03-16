@@ -163,7 +163,7 @@ display: block;
 .legenda-container {
     position: absolute;
     bottom: 130px; /* Distância do fundo */
-    left: 20px;  /* Distância da direita */
+    left: 0px;  /* Distância da direita */
     background: rgba(255, 255, 255, 0.8); /* Fundo branco semi-transparente */
     padding: 10px;
     border-radius: 8px;
@@ -205,7 +205,7 @@ display: block;
 /* Ajuste para mobile: se a tela for pequena, a legenda diminui */
 @media (max-width: 600px) {
     .legenda-container {
-        bottom: 70px;
+        bottom: 50px;
         font-size: 12px;
         padding: 3px;
     }

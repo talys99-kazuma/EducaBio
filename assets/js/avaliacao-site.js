@@ -66,7 +66,7 @@ document.getElementById("form-sugestao").addEventListener("submit", function(e){
     .then(response => response.text())
     .then(() => {
 
-        mensagem.textContent = "Sugestão enviada com sucesso! 💚";
+        mensagem.textContent = "Sugestão enviada com sucesso!";
         mensagem.className = "mensagem-sucesso";
         mensagem.style.display = "block";
 
@@ -93,88 +93,84 @@ document.getElementById("form-sugestao").addEventListener("submit", function(e){
     });
 });
 
-const faces = document.querySelectorAll(".face");
-const msg = document.getElementById("avaliacao-msg");
+// MANTENHA O SEU NOVO URL AQUI
+const scriptURL = "https://script.google.com/macros/s/AKfycbwPOnREZ4rHpcwvnQlP9NjarPDxVMfvM6bCNODvdOOeJDw7kqG8bmoZFFeK0AhzFeVrEg/exec";
 
-const scriptURL = "https://script.google.com/macros/s/AKfycbxynOoHbaNz9EYV7XV64VcBjqaEP_C-SPwutZME1ZtVLtiOgWg37bdvcERZdpNZvB5cCg/exec";
+// --- LÓGICA DE CONTROLE DE VERSÃO (BOTÃO MESTRE) ---
+fetch(scriptURL)
+  .then(res => res.text())
+  .then(versaoServidor => {
+    const versaoLocal = localStorage.getItem("educaBio_versao");
 
-let usuarioID = localStorage.getItem("usuarioEducaBio");
+    // Se o dono mudou o número na planilha, reseta o navegador do usuário
+    if (versaoLocal !== versaoServidor) {
+      localStorage.removeItem("avaliacaoEducaBio");
+      localStorage.setItem("educaBio_versao", versaoServidor);
+      location.reload(); 
+    }
+    
+    inicializarAvaliacao(versaoServidor);
+  });
 
-if(!usuarioID){
+function inicializarAvaliacao(versaoAtual) {
+  const faces = document.querySelectorAll(".face");
+  const msg = document.getElementById("avaliacao-msg");
+  
+  // Recupera ou cria ID do usuário
+  let usuarioID = localStorage.getItem("usuarioEducaBio");
+  if(!usuarioID){
+    usuarioID = "user_" + Math.random().toString(36).slice(2,11);
+    localStorage.setItem("usuarioEducaBio", usuarioID);
+  }
 
-usuarioID = "user_" + Math.random().toString(36).substr(2,9);
+  let votoSalvo = localStorage.getItem("avaliacaoEducaBio");
 
-localStorage.setItem("usuarioEducaBio",usuarioID);
+  // Bloqueio visual se já votou
+  if(votoSalvo){
+    msg.textContent = "Você já avaliou este site. Obrigado!";
+    faces.forEach(face => {
+      if(face.dataset.nivel === votoSalvo){
+        face.classList.add("selected");
+        face.parentElement.classList.add("selected");
+      }
+      face.style.pointerEvents = "none";
+      face.style.opacity = "0.7";
+    });
+  }
 
+  // Evento de clique nos emojis
+  faces.forEach(face => {
+    face.addEventListener("click", () => {
+      if(localStorage.getItem("avaliacaoEducaBio")) return;
+
+      const nivel = face.dataset.nivel;
+      localStorage.setItem("avaliacaoEducaBio", nivel);
+      
+      faces.forEach(f => {
+        f.classList.remove("selected");
+        f.parentElement.classList.remove("selected");
+      });
+      face.classList.add("selected");
+      face.parentElement.classList.add("selected");
+      
+      msg.textContent = "Obrigado pela avaliação!";
+
+      fetch(scriptURL, {
+        method: "POST",
+        body: JSON.stringify({
+          usuario: usuarioID,
+          satisfacao: nivel,
+          versao: versaoAtual
+        })
+      });
+    });
+  });
 }
-
-let votoSalvo = localStorage.getItem("avaliacaoEducaBio");
-
-if(votoSalvo){
-
-msg.textContent="Você já avaliou este site. Obrigado!";
-
-/* restaurar emoji selecionado */
-faces.forEach(face=>{
-
-if(face.dataset.nivel === votoSalvo){
-
-face.classList.add("selected");
-
-}
-
-});
-
-
-/* bloquear novos cliques */
-faces.forEach(face=>{
-face.style.pointerEvents="none";
-});
-
-}
-
-faces.forEach(face=>{
-
-face.addEventListener("click", ()=>{
-
-if(localStorage.getItem("avaliacaoEducaBio")) return;
-
-faces.forEach(f=>{
-f.classList.remove("selected");
-f.parentElement.classList.remove("selected");
-});
-
-face.classList.add("selected");
-face.parentElement.classList.add("selected");
-
-const nivel = face.dataset.nivel;
-
-localStorage.setItem("avaliacaoEducaBio",nivel);
-
-msg.textContent="Obrigado pela avaliação!";
-
-fetch(scriptURL,{
-method:"POST",
-body:JSON.stringify({
-usuario:usuarioID,
-satisfacao:nivel
-})
-})
-.then(res => res.text())
-.then(data => {
-console.log("Resposta do servidor:", data);
-})
-.catch(error => {
-console.error("Erro ao enviar:", error);
-});
-
-});
-});
-
 
 function resetarTudo(){
-
-localStorage.clear();
-
-location.reload();
+    // Limpa os dados de voto e a versão gravada no navegador
+    localStorage.removeItem("avaliacaoEducaBio");
+    localStorage.removeItem("educaBio_versao");
+    
+    location.reload(); 
 }

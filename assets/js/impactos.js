@@ -91,7 +91,7 @@ document.querySelectorAll(".btn-primary, .btn-secondary").forEach((button) => {
 })
 
 // Video play tracking
-document.querySelectorAll(".video-container iframe").forEach((iframe) => {
+document.querySelectorAll(".video-container-impact iframe").forEach((iframe) => {
   iframe.addEventListener("load", () => {
     console.log("[v0] Video loaded:", iframe.title)
   })
