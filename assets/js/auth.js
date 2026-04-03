@@ -185,14 +185,14 @@ loginForm?.addEventListener('submit', async (e) => {
         showMessage('Login realizado com sucesso!', 'success');
         setTimeout(() => { closeModal(); }, 1000);
     } catch (error) {
-        showMessage('Erro ao fazer login.', 'error');
+        showMessage('Ops! E-mail ou senha incorretos. Verifique os dados ou clique em "Esqueceu a senha?" para redefinir.', 'error');
     } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Entrar';
     }
 });
 
-// 🔥 CORREÇÃO DO CADASTRO
+// 🔥 CORREÇÃO DO CADASTRO (Adicionado tratamento de erro)
 registerForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = document.getElementById('register-name').value;
@@ -241,7 +241,7 @@ registerForm?.addEventListener('submit', async (e) => {
 });
 
 // ==========================================
-// 🔥 ENVIO DE E-MAIL DE RECUPERAÇÃO (ATUALIZADO)
+// 🔥 NOVO: ENVIO DE E-MAIL DE RECUPERAÇÃO
 // ==========================================
 forgotForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -257,7 +257,6 @@ forgotForm?.addEventListener('submit', async (e) => {
         
         setTimeout(() => {
             forgotForm.reset();
-            if (loginForm) loginForm.reset(); // Limpa os campos de email/senha do login
             showLoginForm();
             submitBtn.disabled = false;
             submitBtn.textContent = 'Enviar Link';
@@ -292,7 +291,7 @@ btnGoogle?.addEventListener('click', async () => {
     }
 });
 
-// 🔥 CORREÇÃO DO REDIRECIONAMENTO AO SAIR (ATUALIZADO)
+// 🔥 CORREÇÃO DO REDIRECIONAMENTO AO SAIR
 async function logout() {
     try {
         await auth.signOut();
@@ -309,13 +308,8 @@ async function logout() {
                 window.location.href = "assets/home.html";
             }
         } else {
-            // Se não respondeu, volta para o index APENAS se ele não estiver lá
-            if (isInAssets) {
-                window.location.href = "../index.html";
-            } else {
-                // Se já estiver no index, apenas recarrega a página para evitar bugs de navegação
-                window.location.reload(); 
-            }
+            // Se não respondeu, volta para o index
+            window.location.href = isInAssets ? "../index.html" : "index.html";
         }
 
     } catch (error) {
