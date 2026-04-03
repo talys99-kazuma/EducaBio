@@ -11,6 +11,471 @@ body {
     line-height: 1.6;
 }
 
+ .hidden { display: none !important; }
+  .modal-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-logo {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+}
+  
+  /* ===============================
+     MENU DESKTOP - ESTRUTURA GERAL
+  ================================ */
+  /* ===============================
+     ÁREA DO USUÁRIO NO MENU (DESKTOP)
+  ================================ */
+.user-box {
+    position: relative;
+    display: flex;
+    justify-content: flex-start; /* Alinha o conteúdo do box à esquerda */
+    margin-bottom: 40px;
+    margin-top: -30px;
+}
+  
+  .btn-user-icon {
+    margin-left: 20px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: all 0.3s ease;
+
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    background-color: #f0f0f0;
+  }
+  
+  
+  .btn-user-icon img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+  }
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;    /* Mantém abaixo do botão */
+    left: 9px;     /* Alinha a borda esquerda do menu com a do botão */
+    right: auto;  /* Garante que não puxe para a direita */
+    background-color: white;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    z-index: 1000;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+  
+  .dropdown-content.show { display: block !important; }
+  
+  .dropdown-premium-header {
+    background: #b0beb2;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgb(0, 0, 0);
+  }
+  
+  #desktop-full-name, #mobile-user-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 150px;
+    vertical-align: middle;
+  }
+  
+  .full-user-name { font-size: 18px; font-weight: bold; }
+  
+  .dropdown-link-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    color: #333;
+    background-color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.2s;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .dropdown-link-item:hover {
+    background: #f8f9fa;
+    color: #007bff;
+  }
+  
+  .dropdown-footer {
+    padding: 15px;
+    border-top: 1px solid #eee;
+  }
+  
+  .btn-premium-sair {
+    width: 100%;
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: bold;
+  }
+  
+  
+  /* ===============================
+     MODAL DE LOGIN (ESTILOS BASE)
+  =============================== */
+  .auth-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+  }
+  
+  .auth-modal {
+    background: #fff;
+    border-radius: 20px;
+    max-width: 420px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    z-index: 10;
+  }
+  
+  .modal-close:hover { background: rgba(255,255,255,0.2); }
+  
+  .modal-header {
+    background: linear-gradient(135deg, #2d6a4f, #4caf50);
+    padding: 40px 30px 30px;
+    text-align: center;
+    color: #fff;
+    border-radius: 20px 20px 0 0;
+  }
+  
+  .modal-icon { margin-bottom: 15px; }
+  .modal-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+  .modal-subtitle { font-size: 0.95rem; opacity: 0.9; }
+  
+  .auth-tabs { display: flex; background: #f5f5f5; }
+  .auth-tab {
+    flex: 1;
+    padding: 16px;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  .auth-tab.active { color: #2d6a4f; background: #fff; }
+  .auth-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: #2d6a4f;
+  }
+  
+  .btn-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: calc(100% - 50px);
+    margin: 25px auto 0;
+    padding: 14px 20px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .divider { display: flex; align-items: center; margin: 20px 25px; color: #999; font-size: 0.9rem; }
+  .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #e0e0e0; }
+  .divider span { padding: 0 15px; }
+  
+  .auth-form { padding: 0 25px 25px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #333; font-size: 0.9rem; }
+  .form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  .form-group input:focus { outline: none; border-color: #2d6a4f; }
+  
+  .password-wrapper { position: relative; }
+  .password-wrapper input { padding-right: 50px; }
+  .toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    padding: 5px;
+  }
+  .toggle-password i {
+  font-size: 24px;
+  transition: 0.2s;
+}
+
+.toggle-password:hover i {
+  color: #2d6a4f;
+  transform: scale(1.1);
+}
+  .forgot-password { display: block; text-align: right; margin-top: 8px; color: #2d6a4f; font-size: 0.85rem; text-decoration: none; }
+  .forgot-text { color: #666; font-size: 0.9rem; margin-bottom: 20px; line-height: 1.5; }
+  
+  .checkbox-group { margin-top: 10px; }
+  .checkbox-label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 0.85rem; color: #555; line-height: 1.4; }
+  .checkbox-label input[type="checkbox"] { width: 18px; height: 18px; margin-top: 2px; accent-color: #2d6a4f; }
+  .checkbox-label a { color: #2d6a4f; text-decoration: none; }
+  
+  .btn-submit-auth {
+    width: 100%;
+    padding: 16px;
+    background: #2d6a4f;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+  }
+  .btn-submit-auth:hover { background: #245a42; transform: translateY(-2px); }
+  .btn-submit-auth:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+  
+  .auth-switch { text-align: center; margin-top: 20px; color: #666; font-size: 0.9rem; }
+  .auth-switch a { color: #2d6a4f; text-decoration: none; font-weight: 600; }
+  
+  .auth-message { margin: 15px 25px 25px; padding: 14px; border-radius: 8px; text-align: center; font-size: 0.9rem; }
+  .auth-message.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+  .auth-message.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+  
+  
+  /* =========================================================
+     RESPONSIVIDADE - MOBILE E TABLET (O SEGREDO ESTÁ AQUI)
+  ========================================================= */
+  @media (max-width: 900px) {
+
+  
+    /* =================================================
+       SESSÃO DE LOGIN/PERFIL NO MOBILE (CÓPIA DA FOTO)
+    ================================================= */
+    .mobile-auth-section { width: 85%; margin: 10px auto 20px; }
+  
+    /* BOTÃO LOGIN (ANTES DO LOGIN) */
+    .btn-login-mobile {
+      width: 100%;
+      padding: 12px 15px;
+      background-color: #2d6a4f !important;
+      color: white !important;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .mobile-avatar-out {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 3px solid #ffffff;
+      object-fit: cover;
+      background-color: #ccc;
+    }
+  
+    /* CARD DO USUÁRIO LOGADO (DEPOIS DO LOGIN) */
+    .mobile-user-profile {
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #fff;
+      border: 1px solid #ddd;
+    }
+    .mobile-user-header {
+      background-color: #2d6a4f !important;
+      padding: 12px 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+    }
+    .mobile-user-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 2px solid #ffffff;
+      object-fit: cover;
+    }
+    .mobile-user-name {
+      color: #ffffff !important;
+      font-weight: bold;
+      font-size: 17px;
+      flex-grow: 1;
+    }
+    .accordion-arrow { transition: transform 0.3s ease; color: white; font-size: 12px; }
+    .mobile-user-profile.open .accordion-arrow { transform: rotate(180deg); }
+  
+    /* LINKS DO SUBMENU SANFONA */
+    .mobile-user-links {
+      max-height: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      transition: max-height 0.3s ease;
+    }
+    .mobile-user-links.show { max-height: 400px; }
+    .mobile-user-links .mobile-user-link {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      text-align: left !important;
+      padding: 15px 20px !important;
+      border: none;
+      border-bottom: 1px solid #eee;
+      color: #333 !important;
+      font-size: 15px !important;
+      background: white !important;
+      text-decoration: none;
+    }
+    .mobile-user-links .mobile-user-link svg.link-icon {
+      width: 22px; height: 22px; stroke: currentColor; stroke-width: 2;
+    }
+  
+    /* BOTÃO SAIR */
+    .mobile-user-links .btn-sair-mobile {
+  background-color: #dc3545 !important;
+  color: #fff !important;
+  border: none !important;
+  
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px;
+  padding: 10px;
+
+  font-weight: bold;
+  border-radius: 6px;
+  margin: 10px auto;
+  width: 80%;
+}
+
+/* Ícone branco igual desktop */
+.mobile-user-links .btn-sair-mobile svg {
+  stroke: #ffffff !important;
+}
+
+.menu-links a.zoom-btn {
+  transition: all 0.2s ease;
+}
+  }
+  
+  /* ===============================
+     CELULARES PEQUENOS
+  =============================== */
+  @media (max-width: 600px) {
+    .banner { font-size: 22px; padding: 20px 15px; }
+    .banner img, .image { max-height: 160px; }
+    .card { font-size: 20px; min-height: 250px; }
+  
+    /* AJUSTE DO MODAL DE LOGIN PRA CABER SEM ZOOM */
+    .auth-modal-overlay {
+      padding-top: 15px;
+      align-items: flex-start; /* Gruda o modal no topo pra evitar sumir pra baixo */
+    }
+    .auth-modal {
+      max-width: 95%; /* Ocupa a tela toda respeitando as bordas */
+      max-height: 95vh;
+      border-radius: 12px;
+    }
+    .modal-header { padding: 20px 15px; }
+    .modal-title { font-size: 1.3rem; }
+    .auth-form { padding: 15px; }
+    .form-group input { padding: 12px; font-size: 0.95rem; }
+    .btn-submit-auth { padding: 14px; font-size: 1rem; }
+  }
+
+  /* Remove o ícone de mostrar senha do navegador (Edge/Chrome) */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-password-toggle-button {
+  display: none !important;
+}
+
+.auth-modal {
+  scrollbar-width: none; /* Firefox */
+}
+
+.auth-modal::-webkit-scrollbar {
+  display: none; /* Chrome, Edge */
+}
+
 /* Header */
 .quiz-header {
     background: linear-gradient(90deg, #2d6a4f, #c0d8c8);
@@ -369,18 +834,270 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Footer */
-footer {
+ /* ===============================
+     FOOTER NOVO - ESTILO PROFISSIONAL
+  =============================== */
+.site-footer {
   background: #2d6a4f;
-  color: white;
-  text-align: center;
-  padding: 30px 20px;
+  color: #ffffff;
+  padding: 50px 40px 30px;
   margin-top: 60px;
 }
 
-footer p {
-  font-size: 1.1rem;
-  margin: 5px 0;
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Logos */
+.footer-logos {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.footer-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.footer-logo img {
+  height: 90px;
+  width: auto;
+  object-fit: contain;
+}
+
+.footer-logo .logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.footer-logo .text-blue {
+  color: #1a4b6e;
+}
+
+.footer-logo .text-green {
+  color: #7cb342;
+}
+
+.talys-logo img {
+  height: 120px;
+  filter: brightness(1.1);
+  margin-left: 25px;
+}
+
+/* Social Links */
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateX(5px);
+  color: #7cb342;
+}
+
+.social-link img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.social-link span {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Emails */
+.footer-emails {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: 70px;
+
+}
+
+.email-section img {
+  width: 45px;
+  height: auto;
+  object-fit: contain;
+}
+
+.email-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.email-list a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.email-list a:hover {
+  color: #7cb342;
+}
+
+/* Divider */
+.footer-divider {
+  max-width: 1200px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #444, transparent);
+}
+
+/* Bottom */
+.footer-bottom {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.footer-bottom p {
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin: 0;
+}
+
+/* ===============================
+     FOOTER RESPONSIVO
+  =============================== */
+@media (max-width: 900px) {
+  .site-footer {
+    padding: 30px 20px 20px;
+  }
+
+  .footer-container {
+    /* Mantém 3 colunas no tablet, mas com ajustes */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.8fr; 
+    gap: 15px;
+    text-align: left;
+    align-items: start;
+  }
+
+  .footer-logos {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .email-section {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-footer {
+    padding: 30px 15px 20px;
+  }
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr; 
+    /* O SEGREDO ESTÁ AQUI: a 1ª linha (redes) pega só o tamanho que precisa, a 2ª (emails) pega o resto */
+    grid-template-rows: max-content 1fr; 
+    gap: 15px; 
+  }
+
+  /* ===============================
+     LADO ESQUERDO (LOGOS)
+  =============================== */
+  .footer-logos {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3; 
+    gap: 15px; /* <-- Diminuí o espaço entre as duas logos (antes era 35px) */
+    justify-content: flex-start;
+  }
+
+  .footer-logo img {
+    height: 75px; 
+  }
+
+  .talys-logo img {
+    height: 100px; 
+    margin-left: 20px; 
+  }
+
+  /* ===============================
+     LADO DIREITO (REDES E EMAILS)
+  =============================== */
+  .footer-social {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin-top: 0; 
+    gap: 15px;
+  }
+
+  .social-link {
+    gap: 10px;
+  }
+
+  .social-link img {
+    width: 32px; 
+    height: 32px;
+  }
+
+  .social-link span {
+    font-size: 0.9rem; 
+  }
+
+  .footer-emails {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    align-self: start; /* <-- Garante que a caixa de e-mails grude na parte de cima */
+  }
+
+  .email-section {
+    margin-top: 10px; /* <-- Espaço exato, bem curtinho, entre o Github e os emails */
+    align-items: center; 
+    gap: 10px;
+  }
+
+  .email-section img {
+    width: 32px; 
+    height: 32px;
+    object-fit: contain;
+  }
+
+  .email-list {
+    gap: 4px;
+  }
+
+  .email-list a {
+    font-size: 0.8rem; 
+    word-break: break-all; 
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem;
+  }
 }
 
 /* Responsive - Tablet */

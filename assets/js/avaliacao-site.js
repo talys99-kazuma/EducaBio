@@ -1,30 +1,94 @@
-const btn = document.getElementById("menu-mobile-btn");
-const menu = document.getElementById("menu-links");
-const overlay = document.getElementById("overlay");
 
-/* abrir / fechar menu */
-function toggleMenu() {
-  btn.classList.toggle("ativo");
-  menu.classList.toggle("ativo");
-  overlay.classList.toggle("ativo");
-  document.body.classList.toggle("menu-aberto");
+document.addEventListener('DOMContentLoaded', function () {
+
+    // 🔹 MENU SANFONA MOBILE (Perfil Logado)
+    const toggle = document.getElementById('mobile-profile-toggle');
+    const menu = document.getElementById('mobile-profile-menu');
+    const card = document.getElementById('mobile-user-profile');
+  
+    if (toggle && menu) {
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        menu.classList.toggle('show');
+        card.classList.toggle('open');
+      });
+    }
+  
+    // 🔹 MENU MOBILE (HAMBÚRGUER)
+    const btn = document.getElementById("menu-mobile-btn");
+    const menuLinks = document.getElementById("menu-links");
+    const overlay = document.getElementById("overlay");
+  
+    function toggleMenu() {
+      btn?.classList.toggle("ativo");
+      menuLinks?.classList.toggle("ativo");
+      overlay?.classList.toggle("ativo");
+      document.body.classList.toggle("menu-aberto");
+    }
+  
+    btn?.addEventListener("click", toggleMenu);
+    overlay?.addEventListener("click", toggleMenu);
+  
+    // Fecha o menu ao clicar em um link
+    document.querySelectorAll(".menu-links a").forEach(link => {
+      link.addEventListener("click", toggleMenu);
+    });
+  
+    // Destaca a página atual
+    const paginaAtual = location.pathname.split("/").pop();
+    document.querySelectorAll(".menu-links a").forEach(link => {
+      if (link.getAttribute("href") === paginaAtual) {
+        link.classList.add("ativo");
+      }
+    });
+ 
+  
+    // Fechar dropdowns clicando fora
+    document.addEventListener("click", function (e) {
+        const userButton = document.getElementById('user-button');
+        const desktopDropdown = document.getElementById('desktop-dropdown-menu');
+        if (desktopDropdown && userButton && !userButton.contains(e.target) && !desktopDropdown.contains(e.target)) {
+            desktopDropdown.classList.remove('show');
+        }
+  
+        const card = document.getElementById('mobile-user-profile');
+        const menu = document.getElementById('mobile-profile-menu');
+        if (card && !card.contains(e.target)) {
+            menu?.classList.remove('show');
+            card.classList.remove('open');
+        }
+    });
+  });
+
+  // Smooth scroll for navigation
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault()
+    const target = document.querySelector(this.getAttribute("href"))
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      })
+    }
+  })
+})
+
+// Intersection Observer for animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: "0px 0px -50px 0px",
 }
 
-btn.addEventListener("click", toggleMenu);
-overlay.addEventListener("click", toggleMenu);
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = "1"
+      entry.target.style.transform = "translateY(0)"
+    }
+  })
+}, observerOptions)
 
-/* fechar ao clicar em um link */
-document.querySelectorAll(".menu-links a").forEach(link => {
-  link.addEventListener("click", toggleMenu);
-});
-
-/* destacar página ativa */
-const paginaAtual = location.pathname.split("/").pop();
-document.querySelectorAll(".menu-links a").forEach(link => {
-  if (link.getAttribute("href") === paginaAtual) {
-    link.classList.add("ativo");
-  }
-});
 
 document.getElementById("form-sugestao").addEventListener("submit", function(e){
     e.preventDefault();

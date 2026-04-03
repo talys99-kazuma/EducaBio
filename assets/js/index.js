@@ -12,12 +12,12 @@ if (!VERSAO_ATUAL) {
 const versaoRespondida = localStorage.getItem("versaoRespondida");
 
 if (versaoRespondida === VERSAO_ATUAL) {
-    window.location.href = "assets/home.html";
+    window.location.href = "/assets/home.html";
     return;
 }
     // ✅ Se já respondeu, vai direto para home
 if (localStorage.getItem("diagnosticoRespondido") === "true") {
-    window.location.href = "assets/home.html";
+    window.location.href = "/assets/home.html";
     return;
 }
     const questionsContainer = document.getElementById('questions-container');
@@ -172,25 +172,23 @@ if (localStorage.getItem("diagnosticoRespondido") === "true") {
         });
     }
 
-    // Validar respostas
-    function validateForm() {
-        let isValid = true;
-        const formData = new FormData(diagnosticForm);
-        
-        questions.forEach(q => {
-            const answer = formData.get(`question_${q.id}`);
-            if (!answer || answer.trim() === '') {
-                isValid = false;
-            }
-        });
+// Validar respostas
+function validateForm() {
+    let isValid = true;
+    const formData = new FormData(diagnosticForm);
+    
+    questions.forEach(q => {
+        const answer = formData.get(`question_${q.id}`);
+        if (!answer || answer.trim() === '') {
+            isValid = false;
+        }
+    });
 
-        return isValid;
-    }
+    return isValid;
+}
 
-
-// Processar envio (salvar no Google Sheets)
-// Processar envio (salva no Google Sheets e redireciona)
-submitBtn.addEventListener('click', function(e) {
+// Processar envio
+submitBtn.addEventListener('click', async function(e) {
     e.preventDefault();
 
     if (!validateForm()) {
@@ -213,54 +211,82 @@ submitBtn.addEventListener('click', function(e) {
         q5: formData.get('question_5'),
         q6: formData.get('question_6'),
         q7: formData.get('question_7'),
-        q8: formData.get('question_8')
+        q8: formData.get('question_8'),
+        timestamp: new Date().toISOString()
     };
 
-    fetch('https://script.google.com/macros/s/AKfycbxtQNPrlMzdLxiF3wUpOjx1XXnck8eSe9TD_bjgdJaoIhh5vEgLqilOmgPDujhdxErp/exec', {
-        method: 'POST',
-        body: JSON.stringify(data)
-    })
-    .then(() => {
+    try {
+        // Enviar para Google Sheets
+        fetch('https://script.google.com/macros/s/AKfycbxtQNPrlMzdLxiF3wUpOjx1XXnck8eSe9TD_bjgdJaoIhh5vEgLqilOmgPDujhdxErp/exec', {
+            method: 'POST',
+            body: JSON.stringify(data)
+        }).catch(() => {});
+
+        // Salvar no Firestore se usuário estiver logado
+        const user = auth.currentUser;
+        if (user) {
+            await db.collection('users').doc(user.uid).set({
+              questionarioRespondido: true,
+              respostasQuestionario: data,
+              dataQuestionario: firebase.firestore.FieldValue.serverTimestamp()
+              }, { merge: true });
+        }
+
+        // Salvar no LocalStorage
+        localStorage.setItem("versaoRespondida", VERSAO_ATUAL);
+
         resultMessage.textContent = 'Respostas enviadas com sucesso! Redirecionando...';
         resultMessage.className = 'result-message success';
         resultMessage.classList.remove('hidden');
 
-        localStorage.setItem("versaoRespondida", VERSAO_ATUAL);
-
-        // REDIRECIONAR PARA A TELA INICIAL
+        // Redirecionar para home
         setTimeout(() => {
             window.location.href = 'assets/home.html';
         }, 1000);
-    })
-    .catch(() => {
-        resultMessage.textContent = 'Erro ao enviar respostas ❌';
+
+    } catch (error) {
+        console.error('Erro ao enviar:', error);
+        resultMessage.textContent = 'Erro ao enviar respostas. Tente novamente.';
         resultMessage.classList.remove('hidden');
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<span>Enviar Respostas</span><span class="btn-icon">➜</span>';
-    });
+    }
 });
 
 
+// Inicializar
+renderQuestions();
 
-    // Inicializar
-    renderQuestions();
-
-    // Animação de entrada suave para as questões
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 100);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.question-block').forEach(block => {
-        block.style.opacity = '0';
-        block.style.transform = 'translateY(20px)';
-        block.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        observer.observe(block);
+// Animação de entrada suave para as questões
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }, index * 100);
+        }
     });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.question-block').forEach(block => {
+    block.style.opacity = '0';
+    block.style.transform = 'translateY(20px)';
+    block.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(block);
+});
+document.addEventListener('DOMContentLoaded', () => {
+    // Verifica se é a primeira visita do usuário
+    const primeiraVisita = localStorage.getItem("jaVisitouEducaBio");
+    const authModalOverlay = document.getElementById('auth-modal-overlay');
+
+    if (!primeiraVisita && authModalOverlay) {
+        // Mostra o modal de login dando um pequeno atraso de meio segundo
+        setTimeout(() => {
+            authModalOverlay.classList.remove('hidden');
+            // Marca que o usuário já visitou para não encher o saco dele nas próximas vezes
+            localStorage.setItem("jaVisitouEducaBio", "true");
+        }, 500); 
+    }
+});
 });

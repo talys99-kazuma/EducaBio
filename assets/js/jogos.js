@@ -1,31 +1,3 @@
-const btn = document.getElementById("menu-mobile-btn");
-const menu = document.getElementById("menu-links");
-const overlay = document.getElementById("overlay");
-
-/* abrir / fechar menu */
-function toggleMenu() {
-  btn.classList.toggle("ativo");
-  menu.classList.toggle("ativo");
-  overlay.classList.toggle("ativo");
-  document.body.classList.toggle("menu-aberto");
-}
-
-btn.addEventListener("click", toggleMenu);
-overlay.addEventListener("click", toggleMenu);
-
-/* fechar ao clicar em um link */
-document.querySelectorAll(".menu-links a").forEach(link => {
-  link.addEventListener("click", toggleMenu);
-});
-
-/* destacar página ativa */
-const paginaAtual = location.pathname.split("/").pop();
-document.querySelectorAll(".menu-links a").forEach(link => {
-  if (link.getAttribute("href") === paginaAtual) {
-    link.classList.add("ativo");
-  }
-});
-
 // ===== SISTEMA DE TABS DOS JOGOS =====
 document.addEventListener('DOMContentLoaded', () => {
     // Tab switching
@@ -1067,7 +1039,7 @@ function setupMobileInterativo() {
                     '<span id="tablet-missao-text">' + biomasConfig[0].desc + '</span>' +
                 '</div>' +
                 '<div class="ts-field">' +
-                    '<input type="text" class="ts-name-input" id="tablet-name-input" placeholder="Digite seu nome" maxlength="20">' +
+                    '<input type="text" class="ts-name-input" id="tablet-name-input" placeholder="Digite seu nome" maxlength="20" autocomplete="name">' +
                 '</div>' +
                 '<button class="ts-start-btn" id="tablet-start-btn">Iniciar Aventura</button>' +
             '</div>';

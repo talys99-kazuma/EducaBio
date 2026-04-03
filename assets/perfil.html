@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>“EducaBio - Avaliação de Site</title>
-    <link rel="shortcut icon" href="img/icone1.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/avaliacao-site.css">
-    <link rel="stylesheet" href="components/header.css">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>EducaBio - Meu Perfil</title>
+   <link rel="shortcut icon" href="img/icone1.png" type="image/x-icon">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+   <link rel="stylesheet" href="css/perfil.css">
+   <link rel="stylesheet" href="components/header.css">
 
 </head>
-<body>
-    <header class="evaluation-header">
-        <div class="header-content">
-            <img src="img/logo educabio.png" class="logo-img" alt="logo educabio">
-        </div>
-    </header>
+<body class="perfil-body">
 
-<!-- MENU -->
+<div class="topo-site">
+  <header class="logo">
+    <a href="home.html">
+        <img src="img/logo educabio.png" style="max-width:250px;" alt="logo educabio">
+    </a>
+  </header>
+</div>
+
 <nav class="menu-principal">
   <div class="overlay" id="overlay"></div>
 
@@ -134,134 +136,88 @@
   </div>
 </nav>
 
-    <main class="evaluation-main">
-        <div class="evaluation-intro">
-            <div class="intro-icon">
-                <img src="img/assessment.png" alt="Avaliação" class="start-owl">
-            </div>
-            <h2>Avalie sua Experiência</h2>
-            <p class="intro-text">Obrigado por utilizar o EducaBio! Sua avaliação nos ajuda a melhorar constantemente e proporcionar a melhor experiência educacional sobre biomas brasileiros e impactos ambientais.</p>
-            
-            <div class="evaluation-stats">
-                <div class="stat-card">
-                    <div>
-                        <span class="t-icon">📚</span>
-                    </div>
-                    <div class="stat-info">
-                        <span class="stat-title">Conteúdo</span>
-                        <span class="stat-desc">Qualidade das informações</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div>
-                        <span class="t-icon">🕹️</span>
-                    </div>
-                    <div class="stat-info">
-                        <span class="stat-title">Interatividade</span>
-                        <span class="stat-desc">Jogos e atividades</span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div>
-                        <span class="t-icon">💻</span>
-                    </div>
-                    <div class="stat-info">
-                        <span class="stat-title">Design</span>
-                        <span class="stat-desc">Visual e navegação</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="satisfacao-section" id="satisfacao-section">
-
-            <div class="satisfacao-header">
-                <h3>Como foi sua experiência no EducaBio?</h3>
-            </div>
-
-            <!-- Barra de escala visual (apenas decorativa) -->
-            <div class="satisfacao-escala" aria-hidden="true">
-                <span class="escala-rotulo">Péssimo</span>
-                <div class="escala-trilho">
-                    <div class="escala-seg" style="background:#E53935;"></div>
-                    <div class="escala-seg" style="background:#FF7043;"></div>
-                    <div class="escala-seg" style="background:#FFCA28;"></div>
-                    <div class="escala-seg" style="background:#66BB6A;"></div>
-                    <div class="escala-seg" style="background:#2E7D32;"></div>
-                </div>
-                <span class="escala-rotulo">Excelente</span>
-            </div>
-
-            <div class="faces-wrapper">
-
-<div class="face-item">
-<span class="face" data-nivel="1">😞</span>
-<span class="face-label">Muito Insatisfeito</span>
-</div>
-
-<div class="face-item">
-<span class="face" data-nivel="2">🙁</span>
-<span class="face-label">Insatisfeito</span>
-</div>
-
-<div class="face-item">
-<span class="face" data-nivel="3">😐</span>
-<span class="face-label">Pouco Satisfeito</span>
-</div>
-
-<div class="face-item">
-<span class="face" data-nivel="4">😊</span>
-<span class="face-label">Satisfeito</span>
-</div>
-
-<div class="face-item">
-<span class="face" data-nivel="5">🤩</span>
-<span class="face-label">Muito Satisfeito</span>
-</div>
-
-</div>
-            <p id="avaliacao-msg"></p>
-     </div>
+<main class="perfil-main">
+    <div class="profile-card">
         
-
-            <div class="eval-card">
-                <div class="card-icon">
-                    <img src="img/chat.png" alt="ideias" style="width: 100px; height: 100px;">
+        <div class="profile-header-section">
+            <h1 class="welcome-text" id="welcome-name">Olá, Carregando...</h1>
+            
+            <div class="avatar-container">
+                <div class="avatar-wrapper">
+                    <img src="img/user.png" alt="Avatar do Usuário" id="profile-avatar-img">
+                    <input type="file" id="avatar-input" accept="image/*" style="display: none;">
                 </div>
-                <h3>Sugestões e Melhorias</h3>
-                <p>Tem ideias de como podemos melhorar? Compartilhe suas sugestões conosco!</p>
-                <ul class="card-features">
-                    <li>Novas funcionalidades</li>
-                    <li>Conteúdo adicional</li>
-                    <li>Correções e ajustes</li>
-                    <li>Avalie o conteúdo educacional</li>
-                    <li>Opine sobre a navegação</li>
-                    <li>Sugira melhorias</li>
-                </ul>
-                <form id="form-sugestao">
-                <textarea id="sugestao" placeholder="Digite aqui sua sugestão para melhorar o site..."></textarea>
-                <button type="submit" class="btn-google-form secondary">
-                <span>Enviar Sugestão</span>
-                </button>
-                </form>
-                <p id="mensagem-envio"></p>
+                
+                <div class="avatar-actions">
+                    <button class="btn-sair-perfil" id="btn-logout-profile">
+                        <i class="bi bi-box-arrow-left"></i> Sair
+                    </button>
+                    <button class="btn-edit-avatar" id="btn-change-avatar">
+                        <i class="bi bi-pencil-square"></i> Alterar avatar
+                    </button>
+                </div>
             </div>
         </div>
 
+        <div class="profile-divider"></div>
 
-        <div class="thank-you-section">
-            <div class="thank-icon">
-                 <img src="img/like.png" alt="ideias" style="width: 100px; height: 100px; animation: heart-beat 1.5s ease-in-out infinite;">
+        <div class="profile-details-section">
+            
+            <div class="info-group">
+                <h2 class="section-title">Informações de Perfil:</h2>
+                
+                <div class="readonly-field">
+                    <label>Usuário</label>
+                    <input type="text" id="display-name" value="Carregando..." readonly>
+                </div>
+                
+                <div class="readonly-field">
+                    <label>Email</label>
+                    <input type="email" id="display-email" value="Carregando..." readonly>
+                </div>
             </div>
-            <h3>Muito Obrigado!</h3>
-            <p>Sua participação é fundamental para continuarmos oferecendo conteúdo de qualidade sobre educação ambiental.</p>
-            <div class="back-buttons">
-                <a href="home.html" class="btn-back">
-                    <span>Voltar ao Início</span>
-                </a>
-            </div>
+
+            <form class="password-group" id="change-password-form">
+                <h2 class="section-title">Alterar Senha:</h2>
+                
+                <div class="form-group-perfil">
+                    <label for="current-password">Senha Atual</label>
+                    <div class="password-wrapper-perfil">
+                        <input type="password" id="current-password" placeholder="Digite sua senha atual" required autocomplete="current-password">
+                        <button type="button" class="toggle-password-perfil" data-target="current-password">
+                            <i class="bi bi-eye-fill"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="form-group-perfil">
+                    <label for="new-password">Nova Senha</label>
+                    <div class="password-wrapper-perfil">
+                        <input type="password" id="new-password" placeholder="Mínimo 6 caracteres" required minlength="6" autocomplete="new-password">
+                        <button type="button" class="toggle-password-perfil" data-target="new-password">
+                            <i class="bi bi-eye-fill"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="form-group-perfil">
+                    <label for="confirm-new-password">Confirmar Nova Senha</label>
+                    <div class="password-wrapper-perfil">
+                        <input type="password" id="confirm-new-password" placeholder="Repita a nova senha" required autocomplete="new-password">
+                        <button type="button" class="toggle-password-perfil" data-target="confirm-new-password">
+                            <i class="bi bi-eye-fill"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-save-password">Alterar Senha</button>
+            </form>
         </div>
-    </main>
+
+        <div class="auth-message-perfil hidden" id="auth-message-perfil"></div>
+    </div>
+</main>
+
 <footer class="site-footer">
   <div class="footer-container">
     <!-- Coluna Logos -->
@@ -306,15 +262,15 @@
   </div>
 </footer>
 
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
 
-<script src="js/firebase-config.js"></script>
-<script src="js/auth.js"></script>
-<script src="js/avaliacao-site.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/perfil.js"></script> 
+    <script src="components/header.js"></script> 
 
-    
 </body>
 </html>

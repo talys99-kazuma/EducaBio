@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>EducaBio - Jogos Educativos</title>
     <link rel="shortcut icon" href="img/icone1.png" type="image/x-icon">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/jogos.css">
+    <link rel="stylesheet" href="components/header.css">
+
 </head>
 <body>
     <header class="logo">
@@ -24,13 +27,106 @@
   </div>
 
   <div class="menu-links" id="menu-links">
+    <div class="mobile-auth-section">
+        <div id="btn-entrar-mobile" class="btn-login-mobile flex-container">
+            <img src="img/user.png" class="mobile-avatar-out" alt="Avatar">
+            <span>Login / Cadastro</span>
+        </div>
+
+        <div id="mobile-user-profile" class="mobile-user-profile hidden">
+            <div class="mobile-user-header" id="mobile-profile-toggle">
+                <img src="img/user.png" id="mobile-user-avatar" class="mobile-user-avatar" alt="Avatar">
+                <span id="mobile-user-name" class="mobile-user-name">Usuário</span>
+                <span class="accordion-arrow">▼</span>
+            </div>
+            
+            <div class="mobile-user-links" id="mobile-profile-menu">
+                <a href="perfil.html" class="mobile-user-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
+                        <path d="M3 11L12 3L21 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 5V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        
+                        <path d="M5 11V21H19V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Perfil
+                </a>
+                <a href="politica.html" class="mobile-user-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
+                        <path d="M4 3H16V19H4Z" stroke="currentColor" stroke-width="2"/>
+                        
+                        <path d="M8 7H20V23H8Z" stroke="currentColor" stroke-width="2"/>
+                        
+                        <path d="M10 10H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M10 13H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M10 16H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Termos de Uso e Política de Privacidade
+                </a>
+                <button id="btn-sair-mobile" class="mobile-user-link btn-sair-mobile">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H9"/><path d="M16 17L21 12L16 7"/><path d="M21 12H9"/>
+                    </svg>
+                    Sair
+                </button>
+            </div>
+        </div>
+    </div>
+    
     <a class="btn-e"></a>
+<div class="user-box">
+    <button class="btn-user-icon" id="user-button">
+        <img src="img/user.png" id="desktop-user-avatar" alt="User">
+    </button>
+
+    <div class="dropdown-content" id="desktop-dropdown-menu">
+        <div class="dropdown-premium-header">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="link-icon">
+                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+            <span class="full-user-name" id="desktop-full-name">Carregando...</span>
+        </div>
+
+        <div class="dropdown-links-list">
+            <a href="perfil.html" class="dropdown-link-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
+                    <path d="M3 11L12 3L21 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M17 5V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    
+                    <path d="M5 11V21H19V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Perfil
+            </a>
+            <a href="politica.html" class="dropdown-link-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
+                    <path d="M4 3H16V19H4Z" stroke="currentColor" stroke-width="2"/>
+                    
+                    <path d="M8 7H20V23H8Z" stroke="currentColor" stroke-width="2"/>
+                    
+                    <path d="M10 10H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M10 13H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M10 16H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Termos de Uso </br>Politica de Privacidade
+            </a>
+        </div>
+
+        <div class="dropdown-footer">
+            <button class="btn-premium-sair" id="btn-logout-desktop">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M9 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H9"/><path d="M16 17L21 12L16 7"/><path d="M21 12H9"/>
+                </svg>
+                Sair
+            </button>
+        </div>
+    </div>
+</div>
+
     <a href="home.html" class="btn-inicio zoom-btn">Inicio</a>
     <a href="biomas.html" class="btn-biomas zoom-btn">Biomas</a>
     <a href="impactos.html" class="btn-impactos zoom-btn">Impactos</a>
     <a href="mapa.html" class="btn-mapa zoom-btn">Mapa</a>
     <a href="jogos.html" class="btn-jogos zoom-btn">Jogos</a>
-     <a href="avaliacao-site.html" class="btn-jogos zoom-btn">Avaliação</a>
+    <a href="avaliacao-site.html" class="btn-jogos zoom-btn">Avaliação</a>
     <a class="btn-t"></a>
   </div>
 </nav>
@@ -84,7 +180,7 @@
                 <!-- Input nome jogador -->
                 <div id="memoria-name-input" class="player-name-section">
                     <label for="memoria-player-name">Seu nome:</label>
-                    <input type="text" id="memoria-player-name" placeholder="Digite seu nome" maxlength="20">
+                    <input type="text" id="memoria-player-name" placeholder="Digite seu nome" maxlength="20" autocomplete="name">
                     <button id="start-memoria" class="btn-game">Iniciar Jogo</button>
                 </div>
                 
@@ -161,7 +257,7 @@
                                 <p>Use as setas ou as teclas W,A,S,D para mover o explorador</p>
                                 <p class="overlay-hint">Colete sementes, água e animais. Evite fogo, poluição e desmatamento!</p>
                                 <div class="player-name-input" id="interativo-name-section">
-                                    <input type="text" id="interativo-player-name" placeholder="Digite seu nome" maxlength="20">
+                                    <input type="text" id="interativo-player-name" placeholder="Digite seu nome" maxlength="20" autocomplete="name">
                                 </div>
                                 <button id="interativo-start" class="btn-game">Iniciar Aventura</button>
                             </div>
@@ -321,7 +417,7 @@
                         </div>
 
                         <div class="player-name-input">
-                            <input type="text" id="quiz-player-name" placeholder="Digite seu nome" maxlength="20">
+                            <input type="text" id="quiz-player-name" placeholder="Digite seu nome" maxlength="20" autocomplete="name">
                         </div>
                         <button id="quiz-start-btn" class="btn-game">Começar Aventura</button>
                     </div>
@@ -412,8 +508,48 @@
              <a href="mapa.html" class="btn-final">Mapa</a>
              <a href="avaliacao-site.html" class="btn-final">Avaliação</a>
         </div>
-<footer>
- EducaBio &copy; 2025 | Portal Educacional
+<footer class="site-footer">
+  <div class="footer-container">
+    <!-- Coluna Logos -->
+    <div class="footer-logos">
+      <div class="footer-logo">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icone1-7WIvKrvD5g5HbhzWyLmM8t5rJpvHDr.png" alt="EducaBio Logo">
+      </div>
+      <div class="footer-logo talys-logo">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/243720-removebg-preview-8WmonpOTphPnoljR5DUNSmMhlmZqoL.png" alt="Talys Logo">
+      </div>
+    </div>
+
+    <!-- Coluna Redes Sociais -->
+    <div class="footer-social">
+      <a href="https://instagram.com/_.tallyssantos" target="_blank" class="social-link">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/instagram-9ubd6lg7rGDtGo9v0zy2sn0OGkRvIf.png" alt="Instagram">
+        <span>@_.tallyssantos</span>
+      </a>
+      <a href="https://github.com/Talys99-kazuma" target="_blank" class="social-link">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/github-zu1zKWHivKHfpjQVtYl8Pwv744STsI.png" alt="GitHub">
+        <span>Talys99-kazuma</span>
+      </a>
+    </div>
+
+    <!-- Coluna Emails -->
+    <div class="footer-emails">
+      <div class="email-section">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gmail_Logo_512px-Z8vpBb7F5t7RF8ivu543JDUJhdYqXp.png" alt="Gmail">
+        <div class="email-list">
+          <a href="mailto:suporteeducabio@gmail.com">suporteeducabio@gmail.com</a>
+          <a href="mailto:talysfreire99@gmail.com">talysfreire99@gmail.com</a>
+          <a href="mailto:rafaellimacosta290@gmail.com">rafaellimacosta290@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-divider"></div>
+  
+  <div class="footer-bottom">
+    <p>EducaBio &copy; 2026 | Portal Educacional</p>
+  </div>
 </footer>
 
     <!-- FULLSCREEN MOBILE GAME CONTAINER -->
@@ -505,7 +641,7 @@
                     </select>
                 </div>
                 <div class="mobile-start-name">
-                    <input type="text" id="mobile-start-name-input" placeholder="Digite seu nome" maxlength="20">
+                    <input type="text" id="mobile-start-name-input" placeholder="Digite seu nome" maxlength="20" autocomplete="name">
                 </div>
                 <button id="mobile-start-btn" class="btn-game">Iniciar Aventura</button>
             </div>
@@ -543,6 +679,14 @@
   };
 </script>
 
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+
+    <script src="js/firebase-config.js"></script>
     <script src="js/jogos.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="components/header.js"></script>
 </body>
 </html>
