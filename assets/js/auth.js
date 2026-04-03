@@ -276,19 +276,19 @@ forgotForm?.addEventListener('submit', async (e) => {
     }
 });
 
+// 🔥 CORREÇÃO DO LOGIN COM GOOGLE (USANDO APENAS POPUP)
 btnGoogle?.addEventListener('click', async () => {
     try {
         const googleProvider = new firebase.auth.GoogleAuthProvider();
-        const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        if (isMobile) {
-            await auth.signInWithRedirect(googleProvider);
-        } else {
-            const result = await auth.signInWithPopup(googleProvider);
-            await salvarUsuarioSeNovo(result.user);
-            closeModal();
-        }
+        
+        // Popup agora é usado tanto para Desktop quanto para Mobile
+        const result = await auth.signInWithPopup(googleProvider);
+        await salvarUsuarioSeNovo(result.user);
+        closeModal();
+        
     } catch (error) {
-        showMessage('Erro Google.', 'error');
+        console.error("Erro no login com Google:", error);
+        showMessage('Erro Google: ' + error.message, 'error');
     }
 });
 
@@ -404,6 +404,9 @@ auth.getRedirectResult().then(async (result) => {
         await salvarUsuarioSeNovo(result.user);
         if (!usuarioTemSenha(result.user)) setTimeout(() => perguntarCriarSenha(), 1000);
     }
+}).catch((error) => {
+    // Adicionado tratamento de erro para facilitar depuração, se necessário
+    console.error("Erro ao recuperar login de redirecionamento:", error);
 });
 
 auth.onAuthStateChanged(async (user) => {
