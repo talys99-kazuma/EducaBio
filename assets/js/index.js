@@ -12,12 +12,12 @@ if (!VERSAO_ATUAL) {
 const versaoRespondida = localStorage.getItem("versaoRespondida");
 
 if (versaoRespondida === VERSAO_ATUAL) {
-    window.location.href = "/assets/home.html";
+    window.location.href = "assets/home.html";
     return;
 }
     // ✅ Se já respondeu, vai direto para home
 if (localStorage.getItem("diagnosticoRespondido") === "true") {
-    window.location.href = "/assets/home.html";
+    window.location.href = "assets/home.html";
     return;
 }
     const questionsContainer = document.getElementById('questions-container');
