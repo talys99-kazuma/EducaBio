@@ -755,7 +755,6 @@ nav.menu-principal {
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: left;
     padding-left: 6px;
 }
 .ranking-table th {

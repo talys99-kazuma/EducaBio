@@ -238,47 +238,37 @@ function saveMemoriaScore(name, time, attempts) {
 }
 
 function renderMemoriaRanking() {
-
-    const { collection, query, orderBy, limit, onSnapshot } = window.firebaseFunctions;
-    const db = window.db;
-
-    const q = query(
-        collection(db, "rankingMemoria"),
-        orderBy("time", "asc"), // menor tempo primeiro
-        limit(500)
-    );
-
     const tbody = document.getElementById('ranking-memoria-body');
     const emptyMsg = document.getElementById('ranking-memoria-empty');
 
-    onSnapshot(q, (snapshot) => {
+    db.collection("rankingMemoria")
+      .orderBy("time", "asc")
+      .limit(500)
+      .onSnapshot((snapshot) => {
+          tbody.innerHTML = '';
 
-        tbody.innerHTML = '';
+          if (snapshot.empty) {
+              emptyMsg.style.display = 'block';
+              return;
+          }
 
-        if (snapshot.empty) {
-            emptyMsg.style.display = 'block';
-            return;
-        }
+          emptyMsg.style.display = 'none';
+          let pos = 1;
 
-        emptyMsg.style.display = 'none';
-
-        let pos = 1;
-
-        snapshot.forEach(doc => {
-            const entry = doc.data();
-
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>${pos++}</td>
-                <td>${entry.name}</td>
-                <td>${formatTime(entry.time)}</td>
-                <td>${entry.attempts}</td>
-            `;
-
-            tbody.appendChild(tr);
-        });
-
-    });
+          snapshot.forEach(doc => {
+              const entry = doc.data();
+              const tr = document.createElement('tr');
+              tr.innerHTML = `
+                  <td>${pos++}</td>
+                  <td>${entry.name}</td>
+                  <td>${formatTime(entry.time)}</td>
+                  <td>${entry.attempts}</td>
+              `;
+              tbody.appendChild(tr);
+          });
+      }, (error) => {
+          console.error("Erro ao carregar ranking da memória:", error);
+      });
 }
 
 // ===== JOGO INTERATIVO =====
@@ -948,49 +938,38 @@ function saveInterativoScore(name, score, bioma) {
 
 }
 function renderInterativoRanking() {
-
-    const { collection, query, orderBy, limit, onSnapshot } = window.firebaseFunctions;
-    const db = window.db;
-
-    const q = query(
-        collection(db, "rankingInterativo"),
-        orderBy("score", "desc"),
-        limit(500)
-    );
-
     const tbody = document.getElementById('ranking-interativo-body');
     const emptyMsg = document.getElementById('ranking-interativo-empty');
 
-    onSnapshot(q, (snapshot) => {
+    db.collection("rankingInterativo")
+      .orderBy("score", "desc")
+      .limit(500)
+      .onSnapshot((snapshot) => {
+          tbody.innerHTML = '';
 
-        tbody.innerHTML = '';
+          if (snapshot.empty) {
+              emptyMsg.style.display = 'block';
+              return;
+          }
 
-        if (snapshot.empty) {
-            emptyMsg.style.display = 'block';
-            return;
-        }
+          emptyMsg.style.display = 'none';
+          let pos = 1;
 
-        emptyMsg.style.display = 'none';
-
-        let pos = 1;
-
-        snapshot.forEach(doc => {
-            const entry = doc.data();
-
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>${pos++}</td>
-                <td>${entry.name}</td>
-                <td>${entry.score}</td>
-                <td>${entry.bioma || '-'}</td>
-            `;
-
-            tbody.appendChild(tr);
-        });
-
-    });
+          snapshot.forEach(doc => {
+              const entry = doc.data();
+              const tr = document.createElement('tr');
+              tr.innerHTML = `
+                  <td>${pos++}</td>
+                  <td>${entry.name}</td>
+                  <td>${entry.score}</td>
+                  <td>${entry.bioma || '-'}</td>
+              `;
+              tbody.appendChild(tr);
+          });
+      }, (error) => {
+          console.error("Erro ao carregar ranking interativo:", error);
+      });
 }
-
 
 // =====================================================
 // MOBILE FULLSCREEN INTERATIVO GAME
@@ -2026,47 +2005,37 @@ function saveQuizScore(name, stars, level) {
 }
 
 function renderQuizRanking() {
-
-    const { collection, query, orderBy, limit, onSnapshot } = window.firebaseFunctions;
-    const db = window.db;
-
-    const q = query(
-        collection(db, "rankingQuiz"),
-        orderBy("stars", "desc"),
-        limit(500)
-    );
-
     const tbody = document.getElementById('ranking-quiz-body');
     const emptyMsg = document.getElementById('ranking-quiz-empty');
 
-    onSnapshot(q, (snapshot) => {
+    db.collection("rankingQuiz")
+      .orderBy("stars", "desc")
+      .limit(50)
+      .onSnapshot((snapshot) => {
+          tbody.innerHTML = '';
 
-        tbody.innerHTML = '';
+          if (snapshot.empty) {
+              emptyMsg.style.display = 'block';
+              return;
+          }
 
-        if (snapshot.empty) {
-            emptyMsg.style.display = 'block';
-            return;
-        }
+          emptyMsg.style.display = 'none';
+          let pos = 1;
 
-        emptyMsg.style.display = 'none';
-
-        let pos = 1;
-
-        snapshot.forEach(doc => {
-            const entry = doc.data();
-
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>${pos++}</td>
-                <td>${entry.name}</td>
-                <td>${entry.stars}</td>
-                <td>Nível ${entry.level}</td>
-            `;
-
-            tbody.appendChild(tr);
-        });
-
-    });
+          snapshot.forEach(doc => {
+              const entry = doc.data();
+              const tr = document.createElement('tr');
+              tr.innerHTML = `
+                  <td>${pos++}</td>
+                  <td>${entry.name}</td>
+                  <td>${entry.stars}</td>
+                  <td>Nível ${entry.level}</td>
+              `;
+              tbody.appendChild(tr);
+          });
+      }, (error) => {
+          console.error("Erro ao carregar ranking do quiz:", error);
+      });
 }
 
 // ===== UTILIDADES =====
@@ -2080,69 +2049,52 @@ function shuffleArray(array) {
 }
 
 async function salvarRankingGlobal(nomeColecao, dados) {
-    const { collection, addDoc } = window.firebaseFunctions;
-    const db = window.db;
-
-    await addDoc(collection(db, nomeColecao), {
-        ...dados,
-        createdAt: new Date()
-    });
+    try {
+        await db.collection(nomeColecao).add({
+            ...dados,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+    } catch (error) {
+        console.error("Erro ao salvar no banco de dados:", error);
+    }
 }
 
 function renderRankingGlobal(nomeColecao, tbodyId, campoOrdenacao) {
+    const tbody = document.getElementById(tbodyId);
+    if (!tbody) return;
 
-    const { collection, query, orderBy, limit, onSnapshot } = window.firebaseFunctions;
-    const db = window.db;
-
-    const q = query(
-        collection(db, nomeColecao),
-        orderBy(campoOrdenacao, "desc"),
-        limit(500)
-    );
-
-    onSnapshot(q, (snapshot) => {
-
-        const tbody = document.getElementById(tbodyId);
-        if (!tbody) return;
-
-        tbody.innerHTML = "";
-
-        let pos = 1;
-
-        snapshot.forEach(doc => {
-            const data = doc.data();
-            const tr = document.createElement("tr");
-
-            tr.innerHTML = `
-                <td>${pos++}</td>
-                <td>${data.name}</td>
-                <td>${data.score ?? data.time}</td>
-            `;
-
-            tbody.appendChild(tr);
-        });
-
-    });
+    db.collection(nomeColecao)
+      .orderBy(campoOrdenacao, "desc")
+      .limit(50)
+      .onSnapshot((snapshot) => {
+          tbody.innerHTML = "";
+          let pos = 1;
+          snapshot.forEach(doc => {
+              const data = doc.data();
+              const tr = document.createElement("tr");
+              tr.innerHTML = `
+                  <td>${pos++}</td>
+                  <td>${data.name}</td>
+                  <td>${data.score ?? data.time}</td>
+              `;
+              tbody.appendChild(tr);
+          });
+      });
 }
 
 async function limparTodosRankings() {
-
-    const { getFirestore, collection, getDocs, deleteDoc, doc } =
-        await import("https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js");
-
-    const db = getFirestore();
-
-    const tipos = ["rankingMemoria", "rankingInterativo", "rankingQuiz"];
-
-    for (const tipo of tipos) {
-
-        const rankingRef = collection(db, tipo);
-        const snapshot = await getDocs(rankingRef);
-
-        for (const item of snapshot.docs) {
-            await deleteDoc(doc(db, tipo, item.id));
+    try {
+        const tipos = ["rankingMemoria", "rankingInterativo", "rankingQuiz"];
+        for (const tipo of tipos) {
+            const snapshot = await db.collection(tipo).get();
+            const batch = db.batch();
+            snapshot.docs.forEach((doc) => {
+                batch.delete(doc.ref);
+            });
+            await batch.commit();
         }
+        console.log("Todos os rankings foram apagados!");
+    } catch (error) {
+        console.error("Erro ao limpar rankings:", error);
     }
-
-    console.log("Todos os rankings foram apagados!");
 }
