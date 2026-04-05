@@ -6,10 +6,8 @@
     <meta name="description" content="Termos de Uso e Politica de Privacidade - EducaBio">
     <title>Termos de Uso e Política de Privacidade - EducaBio</title>
   <link rel="shortcut icon" href="img/icone1.png" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/politica.css">
-  <link rel="stylesheet" href="components/header.css">
+  <link rel="stylesheet" href="css/politicamodal.css">
 </head>
 <body>
 <div class="topo-site">
@@ -18,125 +16,9 @@
     <img src="img/logo educabio.png" id="logoAdmin" style="max-width:300px;" alt="logo educabio">
   </header>
 
+  <div class="menu-principal"></div>
 
-<nav class="menu-principal">
-  <div class="overlay" id="overlay"></div>
-
-  <div class="menu-topo">
-    <div class="menu-mobile-btn" id="menu-mobile-btn">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-
-  <div class="menu-links" id="menu-links">
-    <div class="mobile-auth-section">
-        <div id="btn-entrar-mobile" class="btn-login-mobile flex-container">
-            <img src="img/user.png" class="mobile-avatar-out" alt="Avatar">
-            <span>Login / Cadastro</span>
-        </div>
-
-        <div id="mobile-user-profile" class="mobile-user-profile hidden">
-            <div class="mobile-user-header" id="mobile-profile-toggle">
-                <img src="img/user.png" id="mobile-user-avatar" class="mobile-user-avatar" alt="Avatar">
-                <span id="mobile-user-name" class="mobile-user-name">Usuário</span>
-                <span class="accordion-arrow">▼</span>
-            </div>
-            
-            <div class="mobile-user-links" id="mobile-profile-menu">
-                <a href="perfil.html" class="mobile-user-link">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
-                        <path d="M3 11L12 3L21 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M17 5V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        
-                        <path d="M5 11V21H19V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    Perfil
-                </a>
-                <a href="politica.html" class="mobile-user-link">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
-                        <path d="M4 3H16V19H4Z" stroke="currentColor" stroke-width="2"/>
-                        
-                        <path d="M8 7H20V23H8Z" stroke="currentColor" stroke-width="2"/>
-                        
-                        <path d="M10 10H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M10 13H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M10 16H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                    Termos de Uso e Política de Privacidade
-                </a>
-                <button id="btn-sair-mobile" class="mobile-user-link btn-sair-mobile">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M9 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H9"/><path d="M16 17L21 12L16 7"/><path d="M21 12H9"/>
-                    </svg>
-                    Sair
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <a class="btn-e"></a>
-<div class="user-box">
-    <button class="btn-user-icon" id="user-button">
-        <img src="img/user.png" id="desktop-user-avatar" alt="User">
-    </button>
-
-    <div class="dropdown-content" id="desktop-dropdown-menu">
-        <div class="dropdown-premium-header">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="link-icon">
-                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"/><circle cx="12" cy="7" r="4"/>
-                </svg>
-            <span class="full-user-name" id="desktop-full-name">Carregando...</span>
-        </div>
-
-        <div class="dropdown-links-list">
-            <a href="perfil.html" class="dropdown-link-item">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
-                    <path d="M3 11L12 3L21 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M17 5V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    
-                    <path d="M5 11V21H19V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Perfil
-            </a>
-            <a href="politica.html" class="dropdown-link-item">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
-                    <path d="M4 3H16V19H4Z" stroke="currentColor" stroke-width="2"/>
-                    
-                    <path d="M8 7H20V23H8Z" stroke="currentColor" stroke-width="2"/>
-                    
-                    <path d="M10 10H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M10 13H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    <path d="M10 16H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                Termos de Uso </br>Política de Privacidade
-            </a>
-        </div>
-
-        <div class="dropdown-footer">
-            <button class="btn-premium-sair" id="btn-logout-desktop">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                    <path d="M9 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H9"/><path d="M16 17L21 12L16 7"/><path d="M21 12H9"/>
-                </svg>
-                Sair
-            </button>
-        </div>
-    </div>
-</div>
-
-    <a href="home.html" class="btn-inicio zoom-btn">Inicio</a>
-    <a href="biomas.html" class="btn-biomas zoom-btn">Biomas</a>
-    <a href="impactos.html" class="btn-impactos zoom-btn">Impactos</a>
-    <a href="mapa.html" class="btn-mapa zoom-btn">Mapa</a>
-    <a href="jogos.html" class="btn-jogos zoom-btn">Jogos</a>
-    <a href="avaliacao-site.html" class="btn-jogos zoom-btn">Avaliação</a>
-    <a class="btn-t"></a>
-  </div>
-</nav>
-</div>
-
- <section class="hero">
+   <section class="hero">
         <div class="hero-content">
             <h1>Termos de Uso e Política de Privacidade</h1>
             <p>Conheça seus direitos e responsabilidades ao utilizar a plataforma EducaBio.</p>
@@ -148,7 +30,7 @@
             <div class="toc-card" id="toc-container">
                 <h3 class="toc-title">Índice</h3>
                 <ul class="toc-list" id="toc-termos">
-                    <li><a href="#termos"><span class="toc-number">1</span><strong> Termos de Uso</strong></a></li>
+                    <li><a href="#termos1"><span class="toc-number">1</span><strong> Termos de Uso</strong></a></li>
                     <li><a href="#termos-aceitacao"><span class="toc-number">2</span> Aceitação</a></li>
                     <li><a href="#termos-servico"><span class="toc-number">3</span> Serviço</a></li>
                     <li><a href="#termos-cadastro"><span class="toc-number">4</span> Cadastro</a></li>
@@ -157,7 +39,7 @@
                     <li><a href="#termos-responsabilidade"><span class="toc-number">7</span> Responsabilidade</a></li>
                     <li><a href="#termos-modificacoes"><span class="toc-number">8</span> Modificações</a></li>
     
-                <li><a href="#privacidade"><span class="toc-number">9</span><strong> Política de Privacidade</strong></a></li>
+                <li><a href="#privacidade1"><span class="toc-number">9</span><strong> Política de Privacidade</strong></a></li>
                     <li><a href="#priv-coleta"><span class="toc-number">10</span> Coleta de Dados</a></li>
                     <li><a href="#priv-uso"><span class="toc-number">11</span> Uso dos Dados</a></li>
                     <li><a href="#priv-compartilhamento"><span class="toc-number">12</span> Compartilhamento</a></li>
@@ -170,7 +52,7 @@
         </aside>
 
 <div class="content-area">
-            <section class="content-section active" id="termos">
+            <section class="content-section active" id="termos1">
                 <header class="section-header">
                     <h1>Termos de Uso</h1>
                     <span class="update-date">
@@ -308,7 +190,7 @@
                     <p>Recomendamos que você revise periodicamente esta página para estar ciente de quaisquer mudanças.</p>
                 </article>
             
-<header class="section-header" id="privacidade">
+<header class="section-header" id="privacidade1">
                     <h1>Política de Privacidade</h1>
                     <span class="update-date">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
