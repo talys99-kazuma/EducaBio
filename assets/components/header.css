@@ -33,7 +33,10 @@
     flex: 1;
     border-radius: 4px;
     text-align: center;
-    padding: 25px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 50px;
     font-weight: bold;
     color: #ffffff;
     text-decoration: none;
@@ -49,12 +52,18 @@
   }
   
   .btn-e, .btn-t {
-    padding: 25px 60px;
+    padding: 15px 40px;
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
+  nav.menu-principal {
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 10px;
+      background-color: #ffffff;
+      
+}
   
   /* ===============================
      ÁREA DO USUÁRIO NO MENU (DESKTOP)
@@ -96,8 +105,8 @@
     position: absolute;
     margin-top: 19px;
     top: 100%;
-    right: 0;
-    left: auto;
+    left: 9px;
+    right: auto;
     background-color: white;
     min-width: 240px;
     box-shadow: 0px 10px 25px rgba(0,0,0,0.2);

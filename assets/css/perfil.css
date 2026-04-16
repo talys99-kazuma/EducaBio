@@ -1,11 +1,11 @@
-/* Resets Básicos */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Corpo da Página de Perfil (Fundo sutil) */
+
 .perfil-body {
     font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
     background: linear-gradient(180deg, #f1f8e9 0%, #e8f5e9 100%);
@@ -15,9 +15,7 @@
 
 .hidden { display: none !important; }
 
-/* ===============================
-   LOGO/HEADER (Igual ao Home)
-=============================== */
+
 .topo-site {
     position: relative;
     z-index: 100;
@@ -27,13 +25,10 @@
     background: linear-gradient(90deg, #2d6a4f, #c0d8c8);
     display: flex;
     justify-content: center;
-    padding: 15px 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 10px 0;
 }
 
-/* ===============================
-   CONTAINER PRINCIPAL (PROFILE CARD)
-================================ */
+
 .perfil-main {
     display: flex;
     justify-content: center;
@@ -108,7 +103,7 @@
     background-color: #f0f0f0;
 }
 
-/* Gradiente na borda do avatar (toque elegante) */
+
 .avatar-wrapper::after {
     content: '';
     position: absolute;
@@ -461,7 +456,7 @@
 
 /* Divider */
 .footer-divider {
-  max-width: 1200px;
+  max-width: 2000px;
   height: 1px;
   background: linear-gradient(to right, transparent, #444, transparent);
 }

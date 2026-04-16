@@ -120,7 +120,7 @@
     position: absolute;
     margin-top: 19px;
     top: 100%;
-    right: 0;
+    left: 9px;
     left: auto;
     background-color: white;
     min-width: 240px;
@@ -410,7 +410,7 @@
 
 /* Divider */
 .footer-divider {
-  max-width: 1200px;
+  max-width: 2000px;
   height: 1px;
   background: linear-gradient(to right, transparent, #444, transparent);
 }

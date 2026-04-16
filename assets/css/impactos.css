@@ -464,7 +464,7 @@ html {
 
 /* Divider */
 .footer-divider {
-  max-width: 1200px;
+  max-width: 2000px;
   height: 1px;
   background: linear-gradient(to right, transparent, #444, transparent);
 }
