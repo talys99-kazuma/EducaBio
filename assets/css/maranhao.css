@@ -1054,3 +1054,73 @@ html {
   text-align: center; 
   font-size: 0.9rem; 
 }
+/* ===============================
+   FORÇA LOGO MENOR EM MOBILE
+================================ */
+
+@media (max-width: 900px) {
+
+  .logo img,
+  header .logo img,
+  .header .logo img {
+    width: 160px !important;
+    max-width: 160px !important;
+    height: auto !important;
+  }
+
+}
+/* ===============================
+   NAVEGAÇÃO FINAL RESPONSIVA
+================================ */
+
+.navegacao-final {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 0px 60px;
+  gap: 30px; /* 🔥 espaço entre os botões */
+  flex-wrap: nowrap; /* impede quebrar linha */
+}
+
+.btn-final {
+  flex: 1;
+  max-width: 240px; /* tamanho máximo */
+  min-width: 140px; /* evita esmagar */
+  
+  text-align: center;
+  padding: 14px 0;
+
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+
+  border-radius: 10px;
+  background: #2d6a4f;
+  color: white;
+
+  transition: 0.3s ease;
+}
+
+.btn-final:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* ===============================
+   MOBILE AJUSTE FINO
+================================ */
+@media (max-width: 600px) {
+
+  .navegacao-final {
+    gap: 20px; /* mantém espaço */
+    padding: 30px 15px;
+  }
+.detalhes-biomas {
+  margin-bottom: 40px;
+}
+  .btn-final {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+}
+

@@ -506,7 +506,7 @@ function renderQuizRanking() {
 
     db.collection("rankingQuiz")
       .orderBy("stars", "desc")
-      .limit(50)
+      .limit(500)
       .onSnapshot((snapshot) => {
           tbody.innerHTML = '';
 

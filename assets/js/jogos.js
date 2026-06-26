@@ -2010,7 +2010,7 @@ function renderQuizRanking() {
 
     db.collection("rankingQuiz")
       .orderBy("stars", "desc")
-      .limit(50)
+      .limit(500)
       .onSnapshot((snapshot) => {
           tbody.innerHTML = '';
 
@@ -2065,7 +2065,7 @@ function renderRankingGlobal(nomeColecao, tbodyId, campoOrdenacao) {
 
     db.collection(nomeColecao)
       .orderBy(campoOrdenacao, "desc")
-      .limit(50)
+      .limit(500)
       .onSnapshot((snapshot) => {
           tbody.innerHTML = "";
           let pos = 1;
