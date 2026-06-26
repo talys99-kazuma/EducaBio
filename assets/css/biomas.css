@@ -911,16 +911,7 @@ body.menu-aberto {
     font-size: 2rem;
   }
 }
-/* ===============================
-   ORDEM DOS ELEMENTOS NO MOBILE
-   =============================== */
-/* ===============================
-   MOBILE: layout linear dos biomas
-   NÃO afeta desktop
-   =============================== */
-/* ===============================
-   MOBILE – ordem correta dos biomas
-   =============================== */
+
 @media (max-width: 768px) {
 
   .biome-content {

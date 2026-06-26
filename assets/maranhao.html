@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EducaBio - Maranhão</title>
+  <link rel="shortcut icon" href="img/icone1.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/maranhao.css">
+  <link rel="stylesheet" href="components/header.css">
+    <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+
+</head>
+<body>
+<div class="topo-site">
+  <header class="logo">
+    <a class="logo" href="https://1drv.ms/u/c/4490febef7bc06d4/EcffMJT8x15PtTCqm5pS9LQB7vXdYtjzTFBx39q_yn1-rA?e=7ib0b2"></a>
+    <img src="img/logo educabio.png" id="logoAdmin" style="max-width:300px;" alt="logo educabio">
+  </header>
+
+
+<nav class="menu-principal">
+  <div class="overlay" id="overlay"></div>
+
+  <div class="menu-topo">
+    <div class="menu-mobile-btn" id="menu-mobile-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+  </div>
+
+  <div class="menu-links" id="menu-links">
+    <div class="mobile-auth-section">
+        <div id="btn-entrar-mobile" class="btn-login-mobile flex-container">
+            <img src="img/user.png" class="mobile-avatar-out" alt="Avatar">
+            <span>Login / Cadastro</span>
+        </div>
+
+        <div id="mobile-user-profile" class="mobile-user-profile hidden">
+            <div class="mobile-user-header" id="mobile-profile-toggle">
+                <img src="img/user.png" id="mobile-user-avatar" class="mobile-user-avatar" alt="Avatar">
+                <span id="mobile-user-name" class="mobile-user-name">Usuário</span>
+                <span class="accordion-arrow">▼</span>
+            </div>
+            
+            <div class="mobile-user-links" id="mobile-profile-menu">
+                <a href="perfil.html" class="mobile-user-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
+                        <path d="M3 11L12 3L21 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 5V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        
+                        <path d="M5 11V21H19V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Perfil
+                </a>
+                <a href="politica.html" class="mobile-user-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
+                        <path d="M4 3H16V19H4Z" stroke="currentColor" stroke-width="2"/>
+                        
+                        <path d="M8 7H20V23H8Z" stroke="currentColor" stroke-width="2"/>
+                        
+                        <path d="M10 10H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M10 13H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M10 16H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Termos de Uso e Política de Privacidade
+                </a>
+                <button id="btn-sair-mobile" class="mobile-user-link btn-sair-mobile">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H9"/><path d="M16 17L21 12L16 7"/><path d="M21 12H9"/>
+                    </svg>
+                    Sair
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <a class="btn-e"></a>
+<div class="user-box">
+    <button class="btn-user-icon" id="user-button">
+        <img src="img/user.png" id="desktop-user-avatar" alt="User">
+    </button>
+
+    <div class="dropdown-content" id="desktop-dropdown-menu">
+        <div class="dropdown-premium-header">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="link-icon">
+                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+            <span class="full-user-name" id="desktop-full-name">Carregando...</span>
+        </div>
+
+        <div class="dropdown-links-list">
+            <a href="perfil.html" class="dropdown-link-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
+                    <path d="M3 11L12 3L21 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M17 5V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    
+                    <path d="M5 11V21H19V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Perfil
+            </a>
+            <a href="politica.html" class="dropdown-link-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
+                    <path d="M4 3H16V19H4Z" stroke="currentColor" stroke-width="2"/>
+                    
+                    <path d="M8 7H20V23H8Z" stroke="currentColor" stroke-width="2"/>
+                    
+                    <path d="M10 10H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M10 13H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M10 16H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Termos de Uso </br>Politica de Privacidade
+            </a>
+        </div>
+
+        <div class="dropdown-footer">
+            <button class="btn-premium-sair" id="btn-logout-desktop">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M9 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H9"/><path d="M16 17L21 12L16 7"/><path d="M21 12H9"/>
+                </svg>
+                Sair
+            </button>
+        </div>
+    </div>
+</div>
+
+    <a href="home.html" class="btn-inicio zoom-btn">Inicio</a>
+    <a href="biomas.html" class="btn-biomas zoom-btn">Biomas</a>
+    <a href="impactos.html" class="btn-impactos zoom-btn">Impactos Ambientais</a>
+    <a href="mapa.html" class="btn-mapa zoom-btn">Mapa</a>
+    <a href="maranhao.html" class="btn-mapa zoom-btn">Maranhão</a>
+    <a href="quiz.html" class="btn-jogos zoom-btn">Quiz Ambiental</a>
+    <a href="jogos.html" class="btn-jogos zoom-btn">Jogos</a>
+    <a href="avaliacao-site.html" class="btn-jogos zoom-btn">Avaliação</a>
+    <a class="btn-t"></a>
+  </div>
+</nav>
+</div>
+    <section class="hero">
+      <h1>Estado do Maranhão</h1>
+      <p class="hero-subtitle">Descubra sobre o Maranhão e sua rica biodiversidade</p>
+    </section>
+
+
+  <!-- Main Content -->
+  <main class="container">
+
+    
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="stat-card">
+        <div>
+          <img class="stat-icon" src="img/map.png" alt="tamanho territórial">
+        </div>
+        <div class="stat-number">329.651,463</div>
+        <div class="stat-label">km² de área total</div>
+      </div>
+      <div class="stat-card">
+        <div>
+          <img class="stat-icon" src="img/forest.png" alt="biomas">
+        </div>
+        <div class="stat-number">3</div>
+        <div class="stat-label">Biomas presentes</div>
+      </div>
+      <div class="stat-card">
+        <div>
+          <img class="stat-icon" src="img/multiple-users-silhouette.png" alt="biomas">
+        </div>
+        <div class="stat-number">7.018.211</div>
+        <div class="stat-label">milhões de habitantes</div>
+      </div>
+      <div class="stat-card">
+        <div>
+          <img class="stat-icon" src="img/city.png" alt="biomas">
+        </div>
+        <div class="stat-number">217</div>
+        <div class="stat-label">municípios</div>
+      </div>
+    </section>
+
+      <div class="section-title-dark">
+        <h2>Maranhão</h2>
+        <p>Clique no mapa ou na legenda para ver as características das vegetações maranhenses.</p>
+      </div>
+
+    <section class="panel">
+      <article class="card">
+        <div id="map"></div>
+      </article>
+
+      <aside class="card sidebar">
+          <div class="info-box" id="infoBox">
+          <strong>Estado:</strong> Maranhão
+        </div>
+        <div>
+          <h2>Vegetação do Maranhão</h2>
+          <div class="legend-leaflet">
+            <button class="legend-item-leaflet" data-bioma="mata-transicao"><span class="swatch" style="background:#7cb342"></span> Mata de Transição</button>
+            <button class="legend-item-leaflet" data-bioma="cerrado"><span class="swatch" style="background:#9ccc65"></span> Cerrado</button>
+            <button class="legend-item-leaflet" data-bioma="campos"><span class="swatch" style="background:#dce775"></span> Campos</button>
+            <button class="legend-item-leaflet" data-bioma="floresta-equatorial"><span class="swatch" style="background:#2e7d32"></span> Floresta Equatorial</button>
+            <button class="legend-item-leaflet" data-bioma="manguezais"><span class="swatch" style="background:#81d4fa"></span> Manguezais</button>
+            <button class="legend-item-leaflet" data-bioma="restinga"><span class="swatch" style="background:#1e88e5"></span> Vegetação de Restinga</button>
+          </div>
+        </div>
+
+
+      </aside>
+    </section>
+    <!-- ===========================================================
+         PAINEL INTERATIVO DE BIOMA (acionado pelo mapa/legenda)
+    ============================================================ -->
+      <section class="bioma-interativo" id="bioma-interativo">
+
+      <div class="interativo-card" id="interativo-card">
+        <div class="interativo-img">
+          <img id="interativo-imagem" src="img/bioma-mata-transicao.png" alt="Bioma selecionado">
+        </div>
+        <div class="interativo-text">
+          <h3 id="interativo-titulo">Mata de Transição</h3>
+          <p id="interativo-descricao">A Mata de Transição representa a zona de encontro entre a Amazônia e o Cerrado, conhecida como ecótono. Esta região apresenta características únicas, combinando espécies de ambos os biomas.</p>
+          <ul id="interativo-features"></ul>
+        </div>
+      </div>
+    </section>
+        <!-- ===========================================================
+         SOBRE O MARANHÃO
+    ============================================================ -->
+    <section class="biome-section">
+      <div class="biome-content">
+        <div class="image-container">
+          <img src="img/maranhao7.jpg" data-source="https://conhecimentocientifico.r7.com/mata-dos-cocais-o-que-e-onde-fica-saiba-tudo-sobre-a-vegetacao/" alt="Lençóis Maranhenses, paisagem do Maranhão" class="biome-image">
+          <img src="img/111.jpg" data-source="https://www.instagram.com/p/DGGSEF7O4_A/?img_index=2&igsh=MTRwaDB4eno3NTQ3cA==" alt="Lençóis Maranhenses, paisagem do Maranhão" class="biome-image1">
+        </div>
+        <div class="text-content">
+          <h2 class="biome-title">Maranhão</h2>
+          <p class="biome-description">O Maranhão é um estado localizado na Região Nordeste do Brasil e se destaca por sua grande riqueza natural, histórica e cultural ele é segundo maior estado do Nordeste e o oitavo maior do Brasil em extensão territorial, com 329.651,463 km² com uma população estimada em 7.018.211 habitantes. Tendo como capital São Luís, fundada em 1612 pelos franceses, é conhecida por seu centro histórico repleto de construções coloniais e por ser um importante polo cultural e econômico da região.</p>
+          <p class="bioma-description">Além de sua relevância histórica, o estado possui uma das maiores biodiversidades do país, pois é o ponto de encontro entre três grandes biomas brasileiros: Amazônia, Cerrado e Caatinga proporcionando uma enorme variedade de ecossistemas, tornando o Maranhão um dos estados com maior biodiversidade do Brasil. Entre seus cenários mais famosos estão os Lençóis Maranhenses, com suas dunas de areia branca e lagoas cristalinas, além das extensas áreas de manguezais, babaçuais e florestas tropicais.</p>
+          <div class="info-bio">
+            <h3>Destaques do Estado</h3>
+            <ul>
+              <a>Capital: São Luís</a>
+              <a>Região: Nordeste do Brasil</a>
+              <a>640 km de litoral preservado</a>
+              <a>Maior floresta de babaçu do país</a>
+              <a>Parque Nacional dos Lençóis Maranhenses</a>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===========================================================
+         DETALHES DE CADA BIOMA (texto + imagem alternados)
+    ============================================================ -->
+    <section class="detalhes-biomas" id="detalhes">
+      <div class="section-title">
+        <h2>Os Biomas do Maranhão</h2>
+        <p>Conheça em detalhe cada bioma presente no território maranhense</p>
+      </div>
+    <article class="conteiner-biomas">
+      <!-- Cerrado: imagem primeiro, depois texto -->
+      <div class="detalhe-bioma img-primeiro">
+        <div class="detalhe-img">
+          <img src="img/maranhao1.jpg"  alt="Cerrado maranhense">
+        </div>
+        <div class="detalhe-text">
+          <h3>Cerrado</h3>
+          <p>O Cerrado é um dos principais biomas presentes no Maranhão, ocupando grande parte das regiões sul e central do estado. Reconhecido como a savana mais rica em biodiversidade do planeta, apresenta uma vegetação formada por árvores de pequeno porte, arbustos e extensas áreas de gramíneas. As espécies vegetais possuem adaptações que permitem sobreviver aos longos períodos de estiagem, como raízes profundas, cascas grossas e troncos retorcidos.<b style="content: ''; margin-bottom: 10px; display: block;"></b> 
+            Além da riqueza vegetal, o Cerrado abriga uma grande variedade de animais, incluindo tamanduás-bandeira, lobos-guará, veados-campeiros, emas e inúmeras espécies de aves. O bioma também desempenha papel fundamental na manutenção dos recursos hídricos brasileiros, sendo conhecido como o "berço das águas", pois abriga nascentes que alimentam importantes bacias hidrográficas. No Maranhão, sua conservação é essencial para o equilíbrio ambiental e para a preservação da biodiversidade regional.</p>
+        </div>
+      
+      <!-- Mata de Transição: texto + imagem -->
+      
+        <div class="detalhe-text">
+          <h3>Mata de Transição</h3>
+          <p>A Mata de Transição representa uma importante zona de encontro entre a Floresta Amazônica e o Cerrado. Essa característica faz com que a região apresente uma vegetação extremamente diversificada, reunindo espécies típicas dos dois biomas. No Maranhão, essas áreas são marcadas pela presença abundante de palmeiras de babaçu, além de árvores de médio porte e uma rica cobertura vegetal. <b style="content: ''; margin-bottom: 10px; display: block;"></b> 
+             A diversidade biológica encontrada nessa formação vegetal favorece a ocorrência de inúmeras espécies de animais, aves, insetos e plantas. Além de sua importância ecológica, a Mata de Transição possui grande relevância econômica para as comunidades locais, especialmente através do extrativismo sustentável do babaçu. Por funcionar como corredor ecológico natural, essa vegetação contribui para a circulação de espécies e para a manutenção dos processos ecológicos entre diferentes ecossistemas.</p>
+        </div>
+        <div class="detalhe-img">
+          <img src="img/maranhao2.jpg" data-source="https://alkimiaecia.blogspot.com/2021/01/mata-dos-cocais-o-que-e-onde-fica-saiba.html" alt="Mata de Transição com babaçus">
+        </div>
+      
+
+      <!-- Floresta Equatorial: imagem + texto -->
+      
+        <div class="detalhe-img  img-primeiro">
+          <img src="img/maranhao3.jpg" data-source="https://oimparcial.com.br/meio-ambiente/2023/05/maranhao-ganha-reforco-para-preservar-a-amazonia/" alt="Floresta Equatorial Amazônica">
+        </div>
+        <div class="detalhe-text">
+          <h3>Floresta Equatorial</h3>
+          <p>A Floresta Equatorial maranhense integra a Amazônia Legal e ocupa principalmente a porção oeste do estado. Trata-se de uma vegetação densa, úmida e exuberante, caracterizada por árvores que podem ultrapassar quarenta metros de altura. O clima quente e chuvoso durante praticamente todo o ano favorece o desenvolvimento de uma das maiores biodiversidades do planeta.<b style="content: ''; margin-bottom: 10px; display: block;"></b> 
+             Essa floresta abriga milhares de espécies vegetais e animais, muitas delas exclusivas da região amazônica. Os rios, igarapés e áreas alagadas contribuem para a manutenção dos ciclos naturais e fornecem abrigo para inúmeras formas de vida. Além de sua importância ecológica, a Floresta Equatorial exerce papel fundamental na regulação do clima, no armazenamento de carbono e na proteção dos recursos hídricos, sendo considerada uma das formações vegetais mais importantes do mundo.</p> 
+        </div>
+      
+    
+
+      <!-- Manguezais: texto + imagem -->
+      
+        <div class="detalhe-text">
+          <h3>Manguezais</h3>
+          <p>O Maranhão possui uma das maiores extensões contínuas de manguezais do Brasil, localizadas ao longo de seu vasto litoral. Esse ecossistema é formado por vegetação adaptada à mistura entre água doce e salgada, conhecida como água salobra. As raízes aéreas das plantas ajudam na fixação do solo e permitem a sobrevivência em ambientes constantemente influenciados pelas marés.<b style="content: ''; margin-bottom: 10px; display: block;"></b> 
+             Os manguezais desempenham papel essencial na manutenção da vida marinha, funcionando como berçário natural para peixes, crustáceos e moluscos. Além disso, protegem a costa contra processos erosivos, reduzem os impactos das marés e contribuem para a qualidade da água. A conservação desse ecossistema é fundamental para a sustentabilidade ambiental e para a subsistência de diversas comunidades pesqueiras maranhenses.</p>
+        </div>
+        <div class="detalhe-img">
+          <img src="img/maranhao4.jpg" data-source="https://portalamazonia.com/amazonia/conheca-os-manguezais-da-amazonia-o-maior-cinturao-de-manguezais-do-mundo/" alt="Manguezais do litoral maranhense">
+        </div>
+     
+      <!-- Campos: imagem + texto -->
+      
+        <div class="detalhe-img  img-primeiro">
+          <img src="img/maranhao5.jpg" data-source="https://jbazevedo.blogspot.com/2013/12/em-nome-da-baixada-maranhense-parte-i.html" alt="Campos inundáveis do Maranhão">
+        </div>
+        <div class="detalhe-text">
+          <h3>Campos</h3>
+          <p>Os Campos Maranhenses formam uma paisagem singular caracterizada por extensas áreas abertas cobertas principalmente por gramíneas e vegetação rasteira. Durante o período chuvoso, muitas dessas áreas ficam temporariamente inundadas, criando ambientes propícios para a reprodução e alimentação de diversas espécies de aves aquáticas e migratórias.<b style="content: ''; margin-bottom: 10px; display: block;"></b> 
+             Essas formações vegetais possuem grande importância ecológica devido à sua capacidade de abrigar espécies adaptadas às condições de inundação sazonal. Além disso, os Campos Maranhenses desempenham papel relevante para atividades econômicas como a pecuária extensiva e o turismo ecológico. Suas paisagens amplas e naturais representam um dos cenários mais característicos do estado.</p>
+        </div>
+
+      <!-- Vegetação de Restinga: texto + imagem -->
+        <div class="detalhe-text">
+          <h3>Vegetação de Restinga</h3>
+          <p>A Vegetação de Restinga ocorre ao longo da faixa litorânea maranhense, desenvolvendo-se sobre solos arenosos submetidos à influência dos ventos, da salinidade e das condições climáticas costeiras. Essa vegetação é composta por ervas, arbustos e pequenas árvores altamente adaptadas a ambientes com baixa disponibilidade de nutrientes.<b style="content: ''; margin-bottom: 10px; display: block;"></b> 
+             Sua principal função ecológica é estabilizar dunas e proteger o litoral contra processos erosivos. Além disso, a restinga serve como habitat para diversas espécies de aves, répteis, insetos e pequenos mamíferos. A preservação desse ecossistema é fundamental para manter o equilíbrio ambiental das áreas costeiras e garantir a conservação da biodiversidade presente na região litorânea do Maranhão.</p>
+        </div>
+        <div class="detalhe-img">
+          <img src="img/maranhao6.jpg" data-source="https://www.pulsarimagens.com.br/foto/foto?assunto=Vegeta%C3%A7%C3%A3o%20de%20restinga%20nas%20lagoas%20do%20Parque%20Nacional%20dos%20Len%C3%A7%C3%B3is%20Maranhenses&procurar=sil%C3%AAncio&codigo-imagem=04CAD947&codigo=622260&pagina=1&posicao=2&ordenar=1&tipo=&direito-imagem=&autorizacao-imagem=&depois-ano=&anterior-ano=&orientacao=&tipo-video=&autor=&pais=&estado=&cidade=&regiao=" alt="Vegetação de Restinga sobre as dunas">
+        </div>
+      </div>
+    </article>
+    </section>
+    <!-- Navegação Final da Página -->
+<div class="navegacao-final">
+    <a href="mapa.html" class="btn-final">Mapa</a>
+    <a href="quiz.html" class="btn-final">Quiz Ambiental</a>
+</div>
+  </main>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+<div class="auth-modal-overlay hidden" id="auth-modal-overlay">
+    <div class="auth-modal">
+        <button class="modal-close" id="modal-close">&times;</button>
+        
+        <div class="modal-header">
+            <div class="modal-icon">
+                 <img src="img/icone1.png" alt="Logo EducaBio" class="modal-logo">
+            </div>
+            <h2 class="modal-title">Bem-vindo ao EducaBio</h2>
+            <p class="modal-subtitle">Acesse sua conta ou crie uma nova</p>
+        </div>
+
+        <div class="auth-tabs">
+            <button class="auth-tab active" id="tab-login">Entrar</button>
+            <button class="auth-tab" id="tab-register">Criar Conta</button>
+        </div>
+
+        <button type="button" class="btn-google" id="btn-google">
+            <svg width="20" height="20" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            Continuar com Google
+        </button>
+
+        <div class="divider"><span>ou</span></div>
+
+        <form class="auth-form" id="login-form">
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" placeholder="seu@email.com" autocomplete="email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Senha</label>
+                <div class="password-wrapper">
+                   <input type="password" id="login-password" placeholder="Sua senha" autocomplete="current-password" required>
+                    <button type="button" class="toggle-password" data-target="login-password">
+                        <i class="bi bi-eye-fill"></i>
+                    </button>
+                </div>
+                <a href="#" class="forgot-password" id="btn-forgot-password">Esqueceu a senha?</a>
+            </div>
+            <button type="submit" class="btn-submit-auth">Entrar</button>
+            <p class="auth-switch">Não tem uma conta? <a href="#" id="switch-to-register">Cadastre-se</a></p>
+        </form>
+
+        <form class="auth-form hidden" id="register-form">
+            <div class="form-group">
+                <label for="register-name">Nome Completo</label>
+                <input type="text" id="register-name" placeholder="Seu nome" autocomplete="name" required>
+            </div>
+            <div class="form-group">
+                <label for="register-email">Email</label>
+                <input type="email" id="register-email" placeholder="seu@email.com" autocomplete="email" required>
+            </div>
+            <div class="form-group">
+                <label for="register-password">Senha</label>
+                <div class="password-wrapper">
+                    <input type="password" id="register-password" placeholder="Minimo 6 caracteres" autocomplete="new-password" required minlength="6">
+                    <button type="button" class="toggle-password" data-target="login-password">
+                        <i class="bi bi-eye-fill"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="register-confirm-password">Confirmar Senha</label>
+                <div class="password-wrapper">
+                   <input type="password" id="register-confirm-password" placeholder="Repita a senha" autocomplete="new-password" required>
+                    <button type="button" class="toggle-password" data-target="login-password">
+                        <i class="bi bi-eye-fill"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="form-group checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="register-terms" required>
+                   <span>Concordo com os <a href="politicamodal.html#termos1" target="_blank">Termos de Uso</a> e <a href="politicamodal.html#privacidade1" target="_blank">Política de Privacidade</a></span>
+                </label>
+            </div>
+            <button type="submit" class="btn-submit-auth">Criar Conta</button>
+            <p class="auth-switch">Já tem uma conta? <a href="#" id="switch-to-login">Faca login</a></p>
+        </form>
+
+        <form class="auth-form hidden" id="forgot-form">
+            <p class="forgot-text">Digite seu email para receber um link de recuperação de senha.</p>
+            <div class="form-group">
+                <label for="forgot-email">Email</label>
+                <input type="email" id="forgot-email" placeholder="seu@email.com" autocomplete="email" required>
+            </div>
+            <button type="submit" class="btn-submit-auth">Enviar Link</button>
+            <p class="auth-switch"><a href="#" id="back-to-login">Voltar ao login</a></p>
+        </form>
+
+        <div class="auth-message hidden" id="auth-message"></div>
+    </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <!-- Coluna Logos -->
+    <div class="footer-logos">
+      <div class="footer-logo">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icone1-7WIvKrvD5g5HbhzWyLmM8t5rJpvHDr.png" alt="EducaBio Logo">
+      </div>
+      <div class="footer-logo talys-logo">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/243720-removebg-preview-8WmonpOTphPnoljR5DUNSmMhlmZqoL.png" alt="Talys Logo">
+      </div>
+    </div>
+
+    <!-- Coluna Redes Sociais -->
+    <div class="footer-social">
+      <a href="https://instagram.com/_.tallyssantos" target="_blank" class="social-link">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/instagram-9ubd6lg7rGDtGo9v0zy2sn0OGkRvIf.png" alt="Instagram">
+        <span>@_.tallyssantos</span>
+      </a>
+      <a href="https://instagram.com/rafael_costa_007" target="_blank" class="social-link">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/instagram-9ubd6lg7rGDtGo9v0zy2sn0OGkRvIf.png" alt="Instagram">
+        <span>@rafael_costa_007</span>
+      </a>
+      </a>
+    </div>
+
+    <!-- Coluna Emails -->
+    <div class="footer-emails">
+      <div class="email-section">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gmail_Logo_512px-Z8vpBb7F5t7RF8ivu543JDUJhdYqXp.png" alt="Gmail">
+        <div class="email-list">
+          <a href="mailto:suporteeducabio@gmail.com">suporteeducabio@gmail.com</a>
+          <a href="mailto:talysfreire99@gmail.com">talysfreire99@gmail.com</a>
+          <a href="mailto:rafaellimacosta290@gmail.com">rafaellimacosta290@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-divider"></div>
+  
+  <div class="footer-bottom">
+    <p>EducaBio &copy; 2026 | Portal Educacional</p>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/maranhao.js"></script>
+
+
+</body>
+</html>
