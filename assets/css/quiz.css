@@ -867,3 +867,25 @@ nav.menu-principal {
     font-size: 0.8rem;
   }
 }
+/* ===============================
+   FORÇA LOGO MENOR EM MOBILE
+================================ */
+
+
+
+/* ===============================
+   MOBILE AJUSTE FINO
+================================ */
+@media (max-width: 600px) {
+
+  .navegacao-final {
+    gap: 20px; /* mantém espaço */
+    padding: 30px 15px;
+  }
+
+  .btn-final {
+    font-size: 14px;
+    padding: 12px 0;
+  }
+}
+
