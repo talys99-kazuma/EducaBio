@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EducaBio - Biomas Brasileiros e Impactos Ambientais</title>
+  <link rel="shortcut icon" href="img/icone1.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="components/header.css">
+<!-- End Favorite Bookmark Icon --> <link href="/arcgis/rest/static/jsapi-template-main.css" rel="stylesheet" type="text/css">
+<link href="https://js.arcgis.com/4.29/esri/css/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/MapView.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/widgets/Home.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/widgets/ScaleBar.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/widgets/LayerList.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/widgets/Legend.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/widgets/Expand.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/widgets/Compass.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/layers/MapImageLayer.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/widgets/Home/HomeViewModel.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/properties/defaultUnit.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/widgets/ScaleBar/css.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/widgets/ScaleBar/ScaleBarViewModel.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/widgets/Expand/ExpandViewModel.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/support/getDefaultUnitForView.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/geometry/support/geodesicUtils.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/calcite-button.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/2d/webglDeps.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/2d/mapViewDeps.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/calcite-loader.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/calcite-action.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/calcite-action-group.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/calcite-action-menu.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/calcite-flow.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/calcite-flow-item.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/calcite-icon.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/calcite-list.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/calcite-list-item.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/calcite-notice.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/calcite-tooltip.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/button.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/2d/layers/MapImageLayerView2D.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/loader.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/action.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/action-group.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/action-menu.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/observers.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/loadable.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/dom.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/interactive.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/locale.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/t9n.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/panel.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/icon.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/popover.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/scrim.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/utils3.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/filter.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/input.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/input-message.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/progress.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/debounce.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/handle.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/conditionalSlot.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/openCloseComponent.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/component.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/floating-ui.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/guid.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/FloatingArrow.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/form.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/label2.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/2d/layers/LayerView2D.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/2d/layers/graphics/HighlightGraphicContainer.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/2d/layers/support/ExportStrategy.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/layers/MapImageLayerView.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/layers/RefreshableLayerView.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/layers/support/MapServiceLayerViewHelper.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/support/drapedUtils.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/array2.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/key.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/Heading.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/focusTrapComponent.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/chunks/Validation.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/layers/support/ClipRect.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/layers/support/Geometry.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/layers/support/Path.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/2d/viewStateUtils.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/renderers/support/clickToleranceUtils.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/rest/identify.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/rest/support/IdentifyParameters.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/layers/support/popupUtils.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/views/layers/support/ClipArea.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/rest/operations/identify.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/rest/support/IdentifyResult.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/4.29/esri/widgets/Popup.js"></script><script type="text/javascript" src="https://js.arcgis.com/4.29/"></script>
+<style>
+html,
+body,
+#viewDiv {
+  padding: 0;
+  margin: 0;
+  height: 97.5%;
+  width: 100%;
+}
+</style>
+<script type="text/javascript">
+require([
+"esri/Map",
+"esri/views/MapView",
+"esri/widgets/ScaleBar",
+"esri/widgets/LayerList",
+"esri/widgets/Legend",
+"esri/widgets/Expand",
+"esri/widgets/Compass",
+"esri/geometry/Extent",
+"esri/layers/FeatureLayer",
+"esri/renderers/UniqueValueRenderer",
+"esri/symbols/SimpleFillSymbol"
+], (
+Map, MapView, ScaleBar, LayerList, Legend,
+Expand, Compass, Extent, FeatureLayer,
+UniqueValueRenderer, SimpleFillSymbol
+) => {
+  const biomaRenderer = new UniqueValueRenderer({
+    field: "NOME",
+    defaultSymbol: new SimpleFillSymbol({
+      style: "solid",
+      color: [200, 200, 200, 0.5],
+      outline: {
+        color: [80, 80, 80, 1],
+        width: 1
+      }
+    }),
+    uniqueValueInfos: [
+      {
+        value: "Amazônia",
+        label: "Amazônia",
+        symbol: new SimpleFillSymbol({
+          color: [47, 125, 52, 0.75],
+          outline: { color: [20, 70, 28, 1], width: 1.5 }
+        })
+      },
+      {
+        value: "Cerrado",
+        label: "Cerrado",
+        symbol: new SimpleFillSymbol({
+          color: [220, 120, 40, 0.75],
+          outline: { color: [140, 70, 20, 1], width: 1.5 }
+        })
+      },
+      {
+        value: "Caatinga",
+        label: "Caatinga",
+        symbol: new SimpleFillSymbol({
+          color: [210, 145, 40, 0.75],
+          outline: { color: [145, 95, 35, 1], width: 1.5 }
+        })
+      },
+      {
+        value: "Mata Atlântica",
+        label: "Mata Atlântica",
+        symbol: new SimpleFillSymbol({
+          color: [40, 130, 180, 0.75],
+          outline: { color: [20, 65, 90, 1], width: 1.5 }
+        })
+      },
+      {
+        value: "Pantanal",
+        label: "Pantanal",
+        symbol: new SimpleFillSymbol({
+          color: [30, 160, 140, 0.75],
+          outline: { color: [18, 95, 85, 1], width: 1.5 }
+        })
+      },
+      {
+        value: "Pampa",
+        label: "Pampa",
+        symbol: new SimpleFillSymbol({
+          color: [160, 70, 170, 0.75],
+          outline: { color: [90, 45, 100, 1], width: 1.5 }
+        })
+      }
+    ]
+  });
+
+  const layer = new FeatureLayer({
+    url: "https://mapasinterativos.ibge.gov.br/arcgis/rest/services/BIOMA/MapServer/0",
+    outFields: ["NOME"],
+    renderer: biomaRenderer,
+    popupTemplate: {
+      title: "{NOME}",
+      content: "Clique no bioma para ver suas características",
+      fieldInfos: [{ fieldName: "NOME", label: "Bioma" }]
+    }
+  });
+
+  const map = new Map({ layers: [layer] });
+
+  const view = new MapView({
+    container: "viewDiv",
+    map: map,
+    ui: { components: ["attribution"] },
+    constraints: {
+      minScale: 4000000,
+      maxScale: 4000000
+    }
+  });
+
+  const scaleBar = new ScaleBar({
+    view: view,
+    unit: "dual"
+  });
+
+  const layerList = new LayerList({
+    view: view
+  });
+
+  const legend = new Legend({
+    view: view
+  });
+
+  const layerListExpand = new Expand({
+    view: view,
+    content: layerList,
+    expanded: false,
+    expandTooltip: "Expand LayerList"
+  });
+
+  const legendExpand = new Expand({
+    view: view,
+    content: legend,
+    expandTooltip: "Expand Legend",
+    expanded: false
+  });
+
+  view.ui.add(scaleBar, "bottom-right");
+  view.ui.add(layerListExpand, "top-right");
+  view.ui.add(legendExpand, "bottom-left");
+
+  view.when(() => {
+    const initialExtent = Extent.fromJSON(layer.sourceJSON.initialExtent);
+    view.goTo(initialExtent).then(() => {
+      view.constraints.minScale = view.scale;
+      view.constraints.maxScale = view.scale;
+    });
+  });
+
+  view.on("mouse-wheel", (event) => {
+    event.stopPropagation();
+  });
+  view.on("double-click", (event) => {
+    event.stopPropagation();
+  });
+  view.on("double-click", ["Control"], (event) => {
+    event.stopPropagation();
+  });
+
+  const anchorMap = {
+    "Amazônia": "Amazônia",
+    "Caatinga": "Caatinga",
+    "Cerrado": "cerrado",
+    "Mata Atlântica": "MataAtlântica",
+    "Pantanal": "Pantanal",
+    "Pampa": "Pampa"
+  };
+
+  view.on("click", async (event) => {
+    const response = await view.hitTest(event);
+    const result = response.results.find((r) => r.graphic && r.graphic.layer === layer);
+    if (result && result.graphic.attributes) {
+      const nomeBioma = result.graphic.attributes.NOME;
+      const anchor = anchorMap[nomeBioma];
+      if (anchor) {
+        window.location.href = `biomas.html#${encodeURIComponent(anchor)}`;
+      }
+    }
+  });
+});
+</script>
+</head>
+
+
+<body>
+<div class="topo-site">
+  <header class="logo">
+    <a class="logo" href="https://1drv.ms/u/c/4490febef7bc06d4/EcffMJT8x15PtTCqm5pS9LQB7vXdYtjzTFBx39q_yn1-rA?e=7ib0b2"></a>
+    <img src="img/logo educabio.png" id="logoAdmin" style="max-width:300px;" alt="logo educabio">
+  </header>
+
+
+<nav class="menu-principal">
+  <div class="overlay" id="overlay"></div>
+
+  <div class="menu-topo">
+    <div class="menu-mobile-btn" id="menu-mobile-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="menu-links" id="menu-links">
+    <div class="mobile-auth-section">
+        <div id="btn-entrar-mobile" class="btn-login-mobile flex-container">
+            <img src="img/user.png" class="mobile-avatar-out" alt="Avatar">
+            <span>Login / Cadastro</span>
+        </div>
+
+        <div id="mobile-user-profile" class="mobile-user-profile hidden">
+            <div class="mobile-user-header" id="mobile-profile-toggle">
+                <img src="img/user.png" id="mobile-user-avatar" class="mobile-user-avatar" alt="Avatar">
+                <span id="mobile-user-name" class="mobile-user-name">Usuário</span>
+                <span class="accordion-arrow">▼</span>
+            </div>
+            
+            <div class="mobile-user-links" id="mobile-profile-menu">
+                <a href="perfil.html" class="mobile-user-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
+                        <path d="M3 11L12 3L21 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M17 5V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        
+                        <path d="M5 11V21H19V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Perfil
+                </a>
+                <a href="politica.html" class="mobile-user-link">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
+                        <path d="M4 3H16V19H4Z" stroke="currentColor" stroke-width="2"/>
+                        
+                        <path d="M8 7H20V23H8Z" stroke="currentColor" stroke-width="2"/>
+                        
+                        <path d="M10 10H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M10 13H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M10 16H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    Termos de Uso e Política de Privacidade
+                </a>
+                <button id="btn-sair-mobile" class="mobile-user-link btn-sair-mobile">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H9"/><path d="M16 17L21 12L16 7"/><path d="M21 12H9"/>
+                    </svg>
+                    Sair
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <a class="btn-e"></a>
+<div class="user-box">
+    <button class="btn-user-icon" id="user-button">
+        <img src="img/user.png" id="desktop-user-avatar" alt="User">
+    </button>
+
+    <div class="dropdown-content" id="desktop-dropdown-menu">
+        <div class="dropdown-premium-header">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="link-icon">
+                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"/><circle cx="12" cy="7" r="4"/>
+                </svg>
+            <span class="full-user-name" id="desktop-full-name">Carregando...</span>
+        </div>
+
+        <div class="dropdown-links-list">
+            <a href="perfil.html" class="dropdown-link-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
+                    <path d="M3 11L12 3L21 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M17 5V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    
+                    <path d="M5 11V21H19V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Perfil
+            </a>
+            <a href="politica.html" class="dropdown-link-item">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="link-icon">
+                    <path d="M4 3H16V19H4Z" stroke="currentColor" stroke-width="2"/>
+                    
+                    <path d="M8 7H20V23H8Z" stroke="currentColor" stroke-width="2"/>
+                    
+                    <path d="M10 10H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M10 13H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M10 16H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Termos de Uso </br>Politica de Privacidade
+            </a>
+        </div>
+
+        <div class="dropdown-footer">
+            <button class="btn-premium-sair" id="btn-logout-desktop">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M9 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H9"/><path d="M16 17L21 12L16 7"/><path d="M21 12H9"/>
+                </svg>
+                Sair
+            </button>
+        </div>
+    </div>
+</div>
+
+    <a href="home.html" class="btn-inicio zoom-btn">Inicio</a>
+    <a href="biomas.html" class="btn-biomas zoom-btn">Biomas</a>
+    <a href="impactos.html" class="btn-impactos zoom-btn">Impactos Ambientais</a>
+    <a href="mapa.html" class="btn-mapa zoom-btn">Mapa</a>
+    <a href="maranhao.html" class="btn-mapa zoom-btn">Maranhão</a>
+    <a href="quiz.html" class="btn-jogos zoom-btn">Quiz Ambiental</a>
+    <a href="jogos.html" class="btn-jogos zoom-btn">Jogos</a>
+    <a href="avaliacao-site.html" class="btn-jogos zoom-btn">Avaliação</a>
+    <a class="btn-t"></a>
+  </div>
+</nav>
+</div>
+
+<section id="inicio" class="banner">
+  <div> <p>Aprenda sobre os biomas brasileiros e</p> 
+    <p>impactos ambientais de forma divertida!</p></div>
+  <img src="img/mapabaner.png" alt="Ilustracao" class="image"/>
+</section>
+
+<div class="grid-container">
+<div class="item1">
+</div>
+<div class="item2">
+
+</div>
+</div>
+<div id="viewDiv" class="esri-view esri-view-height-small esri-view-height-greater-than-xsmall esri-view-height-less-than-medium esri-view-height-less-than-large esri-view-height-less-than-xlarge esri-view-orientation-landscape esri-view-width-medium esri-view-width-greater-than-xsmall esri-view-width-greater-than-small esri-view-width-less-than-large esri-view-width-less-than-xlarge">
+  <div class="esri-view-root">
+    <div class="esri-view-surface esri-view-surface--touch-none" role="application" tabindex="0" data-navigating="false">
+      <canvas style="width: 937px; height: 678px; display: block;" width="1171" height="848"></canvas>
+    </div>
+    <div class="esri-overlay-surface">
+      <div style="visibility: hidden;">
+
+      </div>
+    </div>
+    <div class="esri-ui calcite-mode-light" lang="pt-BR" style="inset: 0px;">
+      <div class="esri-ui-inner-container esri-ui-corner-container" style="inset: 15px 15px 30px;">
+        <div class="esri-ui-top-left esri-ui-corner">
+          <div class="esri-component esri-zoom esri-widget">
+            <calcite-button class="esri-widget--button" title="Mais Zoom" alignment="center" appearance="solid" kind="neutral" icon-start="plus" scale="m" type="button" width="auto">
+              <template shadowrootmode="open">
+                <div class="interaction-container">
+                  <button aria-label="Mais Zoom" aria-live="polite" class="button-padding--shrunk icon-end-empty" type="button">
+                    <calcite-icon class="icon icon--start" aria-hidden="true" icon="plus" scale="s">
+                      <template shadowrootmode="open">
+                        <svg aria-hidden="true" class="svg" fill="currentColor" height="100%" viewBox="0 0 16 16" width="100%" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M9 4v4h4v1H9v4H8V9H4V8h4V4z"></path>
+                        </svg>
+                      </template>
+                    </calcite-icon>
+                  </button>
+                </div>
+              </template>
+            </calcite-button>
+            <calcite-button class="esri-widget--button" title="Menos Zoom" alignment="center" appearance="solid" kind="neutral" icon-start="minus" scale="m" type="button" width="auto">
+              <template shadowrootmode="open">
+                <div class="interaction-container">
+                  <button aria-label="Menos Zoom" aria-live="polite" class="button-padding--shrunk icon-end-empty" type="button">
+                    <calcite-icon class="icon icon--start" aria-hidden="true" icon="minus" scale="s">
+                      <template shadowrootmode="open">
+                        <svg aria-hidden="true" class="svg" fill="currentColor" height="100%" viewBox="0 0 16 16" width="100%" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M13 8v1H3V8z"></path>
+                        </svg>
+                      </template>
+                    </calcite-icon>
+                  </button>
+                </div>
+              </template>
+            </calcite-button>
+          </div><div class="esri-component esri-home esri-widget">
+            <calcite-button class="esri-widget--button" title="Visualização de mapa padrão" alignment="center" appearance="solid" kind="neutral" icon-start="home" scale="m" type="button" width="auto">
+              <template shadowrootmode="open">
+                <div class="interaction-container">
+                  <button aria-label="Local" aria-live="polite" class="button-padding--shrunk icon-end-empty" type="button">
+                    <calcite-icon class="icon icon--start" aria-hidden="true" icon="home" scale="s">
+                      <template shadowrootmode="open">
+                        <svg aria-hidden="true" class="svg" fill="currentColor" height="100%" viewBox="0 0 16 16" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M3 1v4.5L.5 8H2v7h5v-4h2v4h5V8h1.5L8 .5l-2 2V1zm5 .914l5 5V14h-3v-4H6v4H3V6.914l1-1V2h1v2.914z">
+
+                        </path>
+                      </svg>
+                    </template>
+                  </calcite-icon>
+                </button>
+              </div>
+            </template>
+          </calcite-button>
+        </div>
+        <div class="esri-component" style="display: none;">
+          <calcite-button class="esri-widget--button" title="Redefinir orientação de mapa" alignment="center" appearance="solid" kind="neutral" round="" scale="s" type="button" width="auto">
+            <template shadowrootmode="open">
+              <div class="interaction-container">
+                <button aria-label="Redefinir orientação de mapa" aria-live="polite" class="button-padding content--slotted icon-start-empty icon-end-empty" type="button">
+                  <span class="content">
+                    <slot>
+
+                    </slot>
+                  </span>
+                </button>
+              </div>
+            </template>
+            <div aria-hidden="true" class="esri-compass__icon-container" title="Redefinir orientação de mapa">
+              <calcite-icon aria-hidden="true" icon="compass-needle" scale="m" style="transform: rotateZ(0deg);">
+                <template shadowrootmode="open">
+                  <svg aria-hidden="true" class="svg" fill="currentColor" height="100%" viewBox="0 0 24 24" width="100%" xmlns="http://www.w3.org/2000/svg">
+                    <path d=""></path>
+                  </svg>
+                </template>
+              </calcite-icon>
+            </div>
+          </calcite-button>
+        </div>
+      </div>
+      <div class="esri-ui-top-right esri-ui-corner">
+        <div class="esri-component esri-expand esri-widget esri-expand--auto">
+          <div class="esri-expand__mask">
+          </div>
+          <div class="esri-expand__container">
+            <div class="esri-expand__panel">
+              <calcite-button aria-controls="19f0e8786c5-widget-3_controls_content" aria-expanded="false" class="esri-widget--button" title="Expand LayerList" alignment="center" appearance="solid" kind="neutral" scale="s" type="button" width="auto">
+                <template shadowrootmode="open">
+                  <div class="interaction-container">
+                    <button aria-expanded="false" aria-label="Expand LayerList" aria-live="polite" class="button-padding content--slotted icon-start-empty icon-end-empty" type="button">
+                      <span class="content">
+                        <slot>
+
+                        </slot>
+                      </span>
+                    </button>
+                  </div>
+                </template>
+                <span aria-hidden="true" class="esri-collapse__icon esri-icon-layers">
+
+                </span>
+              </calcite-button>
+            </div>
+            <div id="19f0e8786c5-widget-3_controls_content" role="region" class="esri-expand__content">
+              <div class="esri-layer-list esri-widget esri-widget--panel">
+                <calcite-flow>
+                  <template shadowrootmode="open">
+                    <div class="frame">
+                      <slot>
+
+                      </slot>
+                    </div>
+                  </template>
+                  <calcite-flow-item heading-level="2" overlay-positioning="absolute">
+                    <template shadowrootmode="open">
+                      <div class="interaction-container">
+                        <calcite-panel heading-level="2" overlay-positioning="absolute">
+                          <template shadowrootmode="open"><div class="interaction-container">
+                            <article aria-busy="false" class="container" tabindex="-1">
+                              <header class="header" hidden="">
+                                <div class="header-container" hidden="">
+                                  <div class="header-actions--start header-actions" hidden="">
+                                    <slot name="header-actions-start">
+                                    </slot>
+                                  </div>
+                                  <div class="header-content" hidden="">
+                                    <slot name="header-content">
+
+                                    </slot>
+                                  </div>
+                                  <div class="header-actions--end header-actions" hidden="">
+                                    <slot name="header-actions-end">
+
+                                    </slot>
+                                    <calcite-action-menu hidden="" appearance="solid" overlay-positioning="absolute" placement="bottom-end">
+                                      <template shadowrootmode="open">
+                                        <slot name="trigger">
+                                          <calcite-action class="default-trigger" aria-controls="calcite-action-menu-8041f2b2-a646-0c97-4fe1-e5ba63c1db3a-menu" aria-expanded="false" aria-haspopup="true" id="calcite-action-menu-8041f2b2-a646-0c97-4fe1-e5ba63c1db3a-menu-button" appearance="solid" scale="m">
+                                            <template shadowrootmode="open">
+                                              <div class="interaction-container">
+                                                <button aria-busy="false" aria-disabled="false" aria-label="Opções" aria-pressed="false" class="button" id="calcite-action-745c350e-d341-bfba-c500-838106c980bf-button">
+                                                  <div aria-hidden="true" class="icon-container">
+                                                    <calcite-icon class="" aria-hidden="true" icon="ellipsis" scale="s">
+                                                      <template shadowrootmode="open">
+                                                        <svg aria-hidden="true" class="svg" fill="currentColor" height="100%" viewBox="0 0 16 16" width="100%" xmlns="http://www.w3.org/2000/svg">
+                                                          <path d="">
+                                                          </path>
+                                                        </svg>
+                                                      </template>
+                                                    </calcite-icon>
+                                                    <div class="slot-container">
+                                                      <slot>
+
+                                                      </slot>
+                                                    </div>
+                                                  </div>
+                                                  <div class="text-container">Opções</div></button><slot name="tooltip"></slot><div aria-labelledby="calcite-action-745c350e-d341-bfba-c500-838106c980bf-button" aria-live="polite" class="indicator-text" id="calcite-action-745c350e-d341-bfba-c500-838106c980bf-indicator" role="region"></div></div></template></calcite-action></slot><calcite-popover aria-hidden="true" aria-label="Opções" aria-live="polite" calcite-hydrated-hidden="" id="calcite-popover-1d00ee26-1ffb-e32e-1578-d2c85aa06142" role="dialog" auto-close="" focus-trap-disabled="" pointer-disabled="" offset-distance="0" offset-skidding="0" overlay-positioning="absolute" placement="bottom-end" scale="m" style="visibility: hidden; pointer-events: none; position: absolute;"><template shadowrootmode="open"><div class="calcite-floating-ui-anim"><div class="container"><div class="content"><slot></slot></div></div></div></template><div class="menu" id="calcite-action-menu-8041f2b2-a646-0c97-4fe1-e5ba63c1db3a-menu" role="menu" tabindex="-1" aria-labelledby="calcite-action-menu-8041f2b2-a646-0c97-4fe1-e5ba63c1db3a-menu-button"><slot></slot></div></calcite-popover><slot name="tooltip"></slot></template><calcite-action slot="trigger" aria-controls="calcite-popover-1d00ee26-1ffb-e32e-1578-d2c85aa06142" aria-expanded="false" aria-haspopup="true" id="calcite-action-menu-8041f2b2-a646-0c97-4fe1-e5ba63c1db3a-menu-button" appearance="solid" scale="m"><template shadowrootmode="open"><div class="interaction-container"><button aria-busy="false" aria-disabled="false" aria-label="Opções" aria-pressed="false" class="button" id="calcite-action-55e0b930-d7bb-b6b6-ef0d-361710a1a07e-button"><div aria-hidden="true" class="icon-container"><calcite-icon class="" aria-hidden="true" icon="ellipsis" scale="s"><template shadowrootmode="open"><svg aria-hidden="true" class="svg" fill="currentColor" height="100%" viewBox="0 0 16 16" width="100%" xmlns="http://www.w3.org/2000/svg"><path d=""></path></svg></template></calcite-icon><div class="slot-container"><slot></slot></div></div><div class="text-container">Opções</div></button><slot name="tooltip"></slot><div aria-labelledby="calcite-action-55e0b930-d7bb-b6b6-ef0d-361710a1a07e-button" aria-live="polite" class="indicator-text" id="calcite-action-55e0b930-d7bb-b6b6-ef0d-361710a1a07e-indicator" role="region"></div></div></template></calcite-action><slot name="header-menu-actions"></slot></calcite-action-menu></div></div><div class="action-bar-container" hidden=""><slot name="action-bar"></slot></div></header><div class="content-wrapper" tabindex="-1"><slot></slot><div class="fab-container" hidden=""><slot name="fab"></slot></div></div><footer class="footer" hidden=""><slot name="footer"></slot><slot name="footer-actions"></slot></footer></article></div></template><slot name="action-bar" slot="action-bar"></slot><slot name="header-actions-start" slot="header-actions-start"></slot><slot name="header-actions-end" slot="header-actions-end"></slot><slot name="header-content" slot="header-content"></slot><slot name="header-menu-actions" slot="header-menu-actions"></slot><slot name="fab" slot="fab"></slot><slot name="footer-actions" slot="footer-actions"></slot><slot name="footer" slot="footer"></slot><slot></slot></calcite-panel></div></template><calcite-list data-layer-type="operational" group="root" filter-placeholder="" filter-text="" selection-mode="none" selection-appearance="border"><template shadowrootmode="open"><div class="interaction-container"><div class="container"><div aria-live="polite" class="assistive-text"><div>Total items: 2.</div><ol><li>BIOMA</li><li>Bioma</li></ol></div><table aria-busy="false" aria-label="Lista de Camada" class="table" role="treegrid"><tbody class="table-container"><slot></slot></tbody></table><div aria-live="polite" data-test-id="no-results-container" hidden=""><slot name="filter-no-results"></slot></div></div></div></template><calcite-list-item class="esri-layer-list__item" id="19f0e878559-object-0" title="BIOMA" data-filter="0" open=""><template shadowrootmode="open"><div class="interaction-container"><tr aria-label="BIOMA" aria-level="1" aria-posinset="1" aria-selected="false" aria-setsize="1" class="container container--hover" role="row" tabindex="0" aria-expanded="true" style="--calcite-list-item-spacing-indent-multiplier: 0;"><td class="open-container"><calcite-icon aria-hidden="true" icon="chevron-down" scale="s"><template shadowrootmode="open"><svg aria-hidden="true" class="svg" fill="currentColor" height="100%" viewBox="0 0 16 16" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M8 11.207l-4-4V5.793l4 4 4-4v1.414z"></path></svg></template></calcite-icon></td><td aria-label="BIOMA" class="actions-start" hidden="" role="gridcell"><slot name="actions-start"></slot></td><td aria-label="BIOMA" class="content-container content-container--has-center-content" role="gridcell" tabindex="-1"><div class="content-start" hidden=""><slot name="content-start"></slot></div><div class="custom-content"><slot name="content"></slot></div><div class="content-end" hidden=""><slot name="content-end"></slot></div></td><td aria-label="BIOMA" class="actions-end" role="gridcell" tabindex="-1" data-test-active=""><slot name="actions-end"></slot></td></tr><div class="content-bottom" hidden="" style="--calcite-list-item-spacing-indent-multiplier: 0;"><slot name="content-bottom"></slot></div><div class="nested-container"><slot></slot></div></div></template><div class="esri-layer-list__item-content" slot="content">BIOMA</div><calcite-icon class="esri-layer-list__status-indicator" slot="actions-end" aria-hidden="true" icon="bullet-point" scale="s"><template shadowrootmode="open"><svg aria-hidden="true" class="svg" fill="currentColor" height="100%" viewBox="0 0 16 16" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M8 10c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"></path></svg></template></calcite-icon><calcite-action class="esri-layer-list__visible-toggle" slot="actions-end" title="Visibilidade" appearance="transparent" scale="s"><template shadowrootmode="open"><div class="interaction-container"><button aria-busy="false" aria-disabled="false" aria-label="Visibilidade" aria-pressed="false" class="button" id="calcite-action-75ada64d-52bb-db76-809e-cd8e08f9152b-button"><div aria-hidden="true" class="icon-container"><div class="slot-container"><slot></slot></div></div><div class="text-container">Visibilidade</div></button><slot name="tooltip"></slot><div aria-labelledby="calcite-action-75ada64d-52bb-db76-809e-cd8e08f9152b-button" aria-live="polite" class="indicator-text" id="calcite-action-75ada64d-52bb-db76-809e-cd8e08f9152b-indicator" role="region"></div></div></template><calcite-icon class="esri-layer-list__visible-icon" aria-hidden="true" icon="view-visible" scale="s"><template shadowrootmode="open"><svg aria-hidden="true" class="svg" fill="currentColor" height="100%" viewBox="0 0 16 16" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M10.8 7.5a2.3 2.3 0 1 1-2.3-2.3 2.302 2.302 0 0 1 2.3 2.3zm5.046.37c-.558.69-3.523 4.13-7.287 4.13-3.766 0-6.82-3.434-7.395-4.122a.581.581 0 0 1 .001-.758C1.738 6.434 4.793 3 8.56 3c3.764 0 6.73 3.44 7.286 4.13a.58.58 0 0 1 0 .74zm-.997-.37C14.07 6.61 11.532 4 8.559 4 5.58 4 2.969 6.605 2.16 7.5c.81.897 3.421 3.5 6.398 3.5 2.973 0 5.511-2.61 6.29-3.5z"></path></svg></template></calcite-icon></calcite-action><calcite-list data-layer-type="operational" group="19f0e878559-object-0" selection-mode="none" selection-appearance="icon"><template shadowrootmode="open"><div class="interaction-container"><div class="container"><table aria-busy="false" aria-label="" class="table" role="treegrid"><tbody class="table-container"><slot></slot></tbody></table><div aria-live="polite" data-test-id="no-results-container" hidden=""><slot name="filter-no-results"></slot></div></div></div></template><calcite-list-item class="esri-layer-list__item" id="19f0e8786cc-object-5" title="Bioma"><template shadowrootmode="open"><div class="interaction-container"><tr aria-label="Bioma" aria-level="2" aria-posinset="1" aria-selected="false" aria-setsize="1" class="container container--hover" role="row" tabindex="-1" style="--calcite-list-item-spacing-indent-multiplier: 1;"><td aria-label="Bioma" class="actions-start" hidden="" role="gridcell"><slot name="actions-start"></slot></td><td aria-label="Bioma" class="content-container content-container--has-center-content" role="gridcell"><div class="content-start" hidden=""><slot name="content-start"></slot></div><div class="custom-content"><slot name="content"></slot></div><div class="content-end" hidden=""><slot name="content-end"></slot></div></td><td aria-label="Bioma" class="actions-end" role="gridcell"><slot name="actions-end"></slot></td></tr><div class="content-bottom" hidden="" style="--calcite-list-item-spacing-indent-multiplier: 1;"><slot name="content-bottom"></slot></div><div class="nested-container"><slot></slot></div></div></template><div class="esri-layer-list__item-content" slot="content">Bioma</div><calcite-icon class="esri-layer-list__status-indicator" slot="actions-end" aria-hidden="true" icon="bullet-point" scale="s"><template shadowrootmode="open"><svg aria-hidden="true" class="svg" fill="currentColor" height="100%" viewBox="0 0 16 16" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M8 10c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z"></path></svg></template></calcite-icon><calcite-action class="esri-layer-list__visible-toggle" slot="actions-end" title="Visibilidade" appearance="transparent" scale="s"><template shadowrootmode="open"><div class="interaction-container"><button aria-busy="false" aria-disabled="false" aria-label="Visibilidade" aria-pressed="false" class="button" id="calcite-action-9bda9af7-ea12-99bc-582c-17385135d11a-button"><div aria-hidden="true" class="icon-container"><div class="slot-container"><slot></slot></div></div><div class="text-container">Visibilidade</div></button><slot name="tooltip"></slot><div aria-labelledby="calcite-action-9bda9af7-ea12-99bc-582c-17385135d11a-button" aria-live="polite" class="indicator-text" id="calcite-action-9bda9af7-ea12-99bc-582c-17385135d11a-indicator" role="region"></div></div></template><calcite-icon class="esri-layer-list__visible-icon" aria-hidden="true" icon="view-visible" scale="s"><template shadowrootmode="open"><svg aria-hidden="true" class="svg" fill="currentColor" height="100%" viewBox="0 0 16 16" width="100%" xmlns="http://www.w3.org/2000/svg"><path d="M10.8 7.5a2.3 2.3 0 1 1-2.3-2.3 2.302 2.302 0 0 1 2.3 2.3zm5.046.37c-.558.69-3.523 4.13-7.287 4.13-3.766 0-6.82-3.434-7.395-4.122a.581.581 0 0 1 .001-.758C1.738 6.434 4.793 3 8.56 3c3.764 0 6.73 3.44 7.286 4.13a.58.58 0 0 1 0 .74zm-.997-.37C14.07 6.61 11.532 4 8.559 4 5.58 4 2.969 6.605 2.16 7.5c.81.897 3.421 3.5 6.398 3.5 2.973 0 5.511-2.61 6.29-3.5z"></path></svg></template></calcite-icon></calcite-action></calcite-list-item></calcite-list></calcite-list-item></calcite-list></calcite-flow-item></calcite-flow></div></div></div></div></div><div class="esri-ui-bottom-left esri-ui-corner"><div class="esri-component esri-expand esri-widget esri-expand--auto"><div class="esri-expand__mask"></div><div class="esri-expand__container"><div class="esri-expand__panel"><calcite-button aria-controls="19f0e8786c7-widget-4_controls_content" aria-expanded="false" class="esri-widget--button" title="Expand Legend" alignment="center" appearance="solid" kind="neutral" scale="s" type="button" width="auto"><template shadowrootmode="open"><div class="interaction-container"><button aria-expanded="false" aria-label="Expand Legend" aria-live="polite" class="button-padding content--slotted icon-start-empty icon-end-empty" type="button"><span class="content"><slot></slot></span></button></div></template><span aria-hidden="true" class="esri-collapse__icon esri-icon-layer-list"></span></calcite-button></div><div id="19f0e8786c7-widget-4_controls_content" role="region" class="esri-expand__content"><div class="esri-legend esri-widget esri-widget--panel"><div><div class="esri-legend__service"><h3 aria-level="3" class="esri-widget__heading esri-legend__service-label" role="heading">BIOMA</h3><div class="esri-legend__layer"><div class="esri-legend__layer-table esri-legend__layer-table--size-ramp"><div class="esri-legend__layer-caption">Bioma</div><div class="esri-legend__layer-body"><div class="esri-legend__layer-child-table"><div class="esri-legend__layer-body"><div class="esri-legend__layer-row"><div class="esri-legend__layer-cell esri-legend__layer-cell--symbols"><img alt="Amazônia" aria-label="Amazônia" border="0" class="esri-legend__symbol" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAM0lEQVQ4je3MsREAMAwCMYrff45s6VxK19AFDSDOaBREMnsa+ggcS0MfgWNp6CNw6PPwAszxAvfcSPBuAAAAAElFTkSuQmCC" width="20" style="opacity: 1;"></div><div class="esri-legend__layer-cell esri-legend__layer-cell--info">Amazônia</div></div><div class="esri-legend__layer-row"><div class="esri-legend__layer-cell esri-legend__layer-cell--symbols"><img alt="Caatinga" aria-label="Caatinga" border="0" class="esri-legend__symbol" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAM0lEQVQ4je3MsREAMAwCMRe//xzZklxK19AFDSCkowkimT0NfQSOpaGPwLE09BE45vPwAhi3A/YfQji6AAAAAElFTkSuQmCC" width="20" style="opacity: 1;"></div><div class="esri-legend__layer-cell esri-legend__layer-cell--info">Caatinga</div></div><div class="esri-legend__layer-row"><div class="esri-legend__layer-cell esri-legend__layer-cell--symbols"><img alt="Cerrado" aria-label="Cerrado" border="0" class="esri-legend__symbol" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAANElEQVQ4jWP5f2DFfwYqAhZqGgYCowZSDlioYAYKGDWQcsBCBTNQwKiBlAMWKpjBMMINBACKawO3uo3+6AAAAABJRU5ErkJggg==" width="20" style="opacity: 1;"></div><div class="esri-legend__layer-cell esri-legend__layer-cell--info">Cerrado</div></div><div class="esri-legend__layer-row"><div class="esri-legend__layer-cell esri-legend__layer-cell--symbols"><img alt="Mata Atlântica" aria-label="Mata Atlântica" border="0" class="esri-legend__symbol" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAANElEQVQ4jWO59n/FfwYqAhZqGgYCowZSDlioYAYKGDWQcsBCBTNQwKiBlAMWKpjBMMINBAAVXQPNC643BwAAAABJRU5ErkJggg==" width="20" style="opacity: 1;"></div><div class="esri-legend__layer-cell esri-legend__layer-cell--info">Mata Atlântica</div></div><div class="esri-legend__layer-row"><div class="esri-legend__layer-cell esri-legend__layer-cell--symbols"><img alt="Pampa" aria-label="Pampa" border="0" class="esri-legend__symbol" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAANElEQVQ4jWP5/+HqfwYqAhZqGgYCowZSDlioYAYKGDWQcsBCBTNQwKiBlAMWKpjBMMINBADWJgQUNMIlYQAAAABJRU5ErkJggg==" width="20" style="opacity: 1;"></div><div class="esri-legend__layer-cell esri-legend__layer-cell--info">Pampa</div></div><div class="esri-legend__layer-row"><div class="esri-legend__layer-cell esri-legend__layer-cell--symbols"><img alt="Pantanal" aria-label="Pantanal" border="0" class="esri-legend__symbol" height="20" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAM0lEQVQ4je3MsREAMAwCMRe//5aZg1xK19AFDSB0pAkimT0NfQSOpaGPwLE09BE45vPwApn5BDM8enjBAAAAAElFTkSuQmCC" width="20" style="opacity: 1;"></div><div class="esri-legend__layer-cell esri-legend__layer-cell--info">Pantanal</div></div></div></div></div></div></div></div></div></div></div></div></div></div><div class="esri-ui-bottom-right esri-ui-corner"><div class="esri-component esri-scale-bar esri-widget"><div class="esri-scale-bar__bar-container esri-scale-bar__bar-container--line"><div class="esri-scale-bar__line esri-scale-bar__line--top" style="width: 77px;"></div><div class="esri-scale-bar__label-container esri-scale-bar__label-container--line esri-scale-bar__label-container--top"><div class="esri-scale-bar__label">500 km</div></div></div><div class="esri-scale-bar__bar-container esri-scale-bar__bar-container--line"><div class="esri-scale-bar__line esri-scale-bar__line--bottom" style="width: 124px;"></div><div class="esri-scale-bar__label-container esri-scale-bar__label-container--line esri-scale-bar__label-container--bottom"><div class="esri-scale-bar__label">500 mi</div></div></div></div></div></div><div class="esri-ui-inner-container esri-ui-manual-container"><div class="esri-component esri-attribution esri-widget" dir="ltr"><div class="esri-attribution__sources"></div><div class="esri-attribution__powered-by">Powered by <a class="esri-attribution__link" href="https://www.esri.com/" rel="noreferrer" target="_blank">Esri</a></div></div></div></div></div><div class="esri-view-user-storage"></div></div>
+
+</section>
+
+<div class="auth-modal-overlay hidden" id="auth-modal-overlay">
+    <div class="auth-modal">
+        <button class="modal-close" id="modal-close">&times;</button>
+        
+        <div class="modal-header">
+            <div class="modal-icon">
+                 <img src="img/icone1.png" alt="Logo EducaBio" class="modal-logo">
+            </div>
+            <h2 class="modal-title">Bem-vindo ao EducaBio</h2>
+            <p class="modal-subtitle">Acesse sua conta ou crie uma nova</p>
+        </div>
+
+        <div class="auth-tabs">
+            <button class="auth-tab active" id="tab-login">Entrar</button>
+            <button class="auth-tab" id="tab-register">Criar Conta</button>
+        </div>
+
+        <button type="button" class="btn-google" id="btn-google">
+            <svg width="20" height="20" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            Continuar com Google
+        </button>
+
+        <div class="divider"><span>ou</span></div>
+
+        <form class="auth-form" id="login-form">
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" placeholder="seu@email.com" autocomplete="email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Senha</label>
+                <div class="password-wrapper">
+                   <input type="password" id="login-password" placeholder="Sua senha" autocomplete="current-password" required>
+                    <button type="button" class="toggle-password" data-target="login-password">
+                        <i class="bi bi-eye-fill"></i>
+                    </button>
+                </div>
+                <a href="#" class="forgot-password" id="btn-forgot-password">Esqueceu a senha?</a>
+            </div>
+            <button type="submit" class="btn-submit-auth">Entrar</button>
+            <p class="auth-switch">Não tem uma conta? <a href="#" id="switch-to-register">Cadastre-se</a></p>
+        </form>
+
+        <form class="auth-form hidden" id="register-form">
+            <div class="form-group">
+                <label for="register-name">Nome Completo</label>
+                <input type="text" id="register-name" placeholder="Seu nome" autocomplete="name" required>
+            </div>
+            <div class="form-group">
+                <label for="register-email">Email</label>
+                <input type="email" id="register-email" placeholder="seu@email.com" autocomplete="email" required>
+            </div>
+            <div class="form-group">
+                <label for="register-password">Senha</label>
+                <div class="password-wrapper">
+                    <input type="password" id="register-password" placeholder="Minimo 6 caracteres" autocomplete="new-password" required minlength="6">
+                    <button type="button" class="toggle-password" data-target="login-password">
+                        <i class="bi bi-eye-fill"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="register-confirm-password">Confirmar Senha</label>
+                <div class="password-wrapper">
+                   <input type="password" id="register-confirm-password" placeholder="Repita a senha" autocomplete="new-password" required>
+                    <button type="button" class="toggle-password" data-target="login-password">
+                        <i class="bi bi-eye-fill"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="form-group checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="register-terms" required>
+                   <span>Concordo com os <a href="politicamodal.html#termos1" target="_blank">Termos de Uso</a> e <a href="politicamodal.html#privacidade1" target="_blank">Política de Privacidade</a></span>
+                </label>
+            </div>
+            <button type="submit" class="btn-submit-auth">Criar Conta</button>
+            <p class="auth-switch">Já tem uma conta? <a href="#" id="switch-to-login">Faca login</a></p>
+        </form>
+
+        <form class="auth-form hidden" id="forgot-form">
+            <p class="forgot-text">Digite seu email para receber um link de recuperação de senha.</p>
+            <div class="form-group">
+                <label for="forgot-email">Email</label>
+                <input type="email" id="forgot-email" placeholder="seu@email.com" autocomplete="email" required>
+            </div>
+            <button type="submit" class="btn-submit-auth">Enviar Link</button>
+            <p class="auth-switch"><a href="#" id="back-to-login">Voltar ao login</a></p>
+        </form>
+
+        <div class="auth-message hidden" id="auth-message"></div>
+    </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <!-- Coluna Logos -->
+    <div class="footer-logos">
+      <div class="footer-logo">
+        <a href="home.html">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/icone1-7WIvKrvD5g5HbhzWyLmM8t5rJpvHDr.png" alt="EducaBio Logo">
+        </a>
+     </div>
+      <div class="footer-logo talys-logo">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/243720-removebg-preview-8WmonpOTphPnoljR5DUNSmMhlmZqoL.png" alt="Talys Logo">
+      </div>
+    </div>
+
+    <!-- Coluna Redes Sociais -->
+    <div class="footer-social">
+      <a href="https://instagram.com/_.tallyssantos" target="_blank" class="social-link">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/instagram-9ubd6lg7rGDtGo9v0zy2sn0OGkRvIf.png" alt="Instagram">
+        <span>@_.tallyssantos</span>
+      </a>
+      <a href="https://instagram.com/rafael_costa_007" target="_blank" class="social-link">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/instagram-9ubd6lg7rGDtGo9v0zy2sn0OGkRvIf.png" alt="Instagram">
+        <span>@rafael_costa_007</span>
+      </a>
+      </a>
+    </div>
+
+    <!-- Coluna Emails -->
+    <div class="footer-emails">
+      <div class="email-section">
+        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Gmail_Logo_512px-Z8vpBb7F5t7RF8ivu543JDUJhdYqXp.png" alt="Gmail">
+        <div class="email-list">
+          <a href="mailto:suporteeducabio@gmail.com">suporteeducabio@gmail.com</a>
+          <a href="mailto:talysfreire99@gmail.com">talysfreire99@gmail.com</a>
+          <a href="mailto:rafaellimacosta290@gmail.com">rafaellimacosta290@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-divider"></div>
+  
+  <div class="footer-bottom">
+    <p>EducaBio &copy; 2026 | Portal Educacional</p>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+
+<script src="js/firebase-config.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
