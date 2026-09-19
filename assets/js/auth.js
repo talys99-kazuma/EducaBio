@@ -294,32 +294,28 @@ btnGoogle?.addEventListener('click', async () => {
 
 // 🔥 CORREÇÃO DO REDIRECIONAMENTO AO SAIR (ATUALIZADO)
 async function logout() {
-    try {
-        await auth.signOut();
-        
-        // Verifica se o usuário já fez o questionário no passado
-        const respondeuQuiz = localStorage.getItem("versaoRespondida") !== null || localStorage.getItem("diagnosticoRespondido") === "true";
-        const isInAssets = window.location.pathname.includes('/assets/');
 
-        if (respondeuQuiz) {
-            // Se já respondeu, ou ele continua na página atual (se for a home) ou vai pra home
-            if (isInAssets) {
-                window.location.reload(); 
-            } else {
-                window.location.href = "assets/home.html";
-            }
-        } else {
-            // Se não respondeu, volta para o index APENAS se ele não estiver lá
-            if (isInAssets) {
-                window.location.href = "../index.html";
-            } else {
-                // Se já estiver no index, apenas recarrega a página para evitar bugs de navegação
-                window.location.reload(); 
-            }
-        }
+    try {
+
+        await auth.signOut();
+
+        /*
+        Não usamos mais localStorage para decidir
+        o destino depois do logout.
+
+        O status do questionário pertence à conta
+        do usuário no Firestore.
+        */
+
+        window.location.reload();
 
     } catch (error) {
-        console.error('Erro ao sair:', error);
+
+        console.error(
+            'Erro ao sair:',
+            error
+        );
+
     }
 }
 
@@ -409,23 +405,29 @@ auth.getRedirectResult().then(async (result) => {
     console.error("Erro ao recuperar login de redirecionamento:", error);
 });
 
-auth.onAuthStateChanged(async (user) => {
+// ============================================================
+// ESTADO DE AUTENTICAÇÃO
+// ============================================================
+//
+// O auth.js fica responsável apenas pela interface:
+// mostrar usuário logado ou deslogado.
+//
+// A decisão:
+// questionário → Home
+//
+// fica exclusivamente no index.js.
+//
+
+auth.onAuthStateChanged(async function (user) {
+
     if (user) {
-        try {
-            const doc = await db.collection('users').doc(user.uid).get();
-            const caminhoAtual = window.location.pathname;
-            const estaNoIndex = caminhoAtual.endsWith('index.html') || caminhoAtual === '/' || caminhoAtual.endsWith('EducaBio/');
 
-            if (doc.exists && doc.data().questionarioRespondido && estaNoIndex) {
-                window.location.href = "assets/home.html";
-                return; 
-            }
+        await updateUIForLoggedUser(user);
 
-            await updateUIForLoggedUser(user);
-        } catch (error) {
-            await updateUIForLoggedUser(user);
-        }
     } else {
+
         updateUIForLoggedOutUser();
+
     }
+
 });
